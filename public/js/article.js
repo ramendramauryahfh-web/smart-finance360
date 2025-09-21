@@ -57,6 +57,7 @@ async function loadArticle() {
     const image = post.ImageURL || "images/default.jpg";
     const author = post.Author || "Admin";
     const content = post.Content || "";
+    const pageViews= post.Views || 112
 
     // --- Update SEO meta tags ---
     document.title = post.MetaTitle || title || "Smart Finance 360";
@@ -107,8 +108,12 @@ async function loadArticle() {
       <header class="mb-4">
         <h1 class="mb-2">${title}</h1>
         <div class="text-muted small">
-          <span>${timeAgo(date)}</span> · <span>${readTime} min read</span> · <span>By ${author}</span>
+          <span>${timeAgo(date)}</span> · <span>${readTime} min read</span> · <span>By ${author}</span> -   <span>
+    <img src="images/view.svg" alt="Views" style="width:16px; height:16px; vertical-align:middle; margin-right:4px;">
+    ${pageViews} Views
+  </span>
         </div>
+        
         <ul class="post-meta mt-2">
           ${categories.split(",").map(c => `<li style="display:inline; margin-right:5px;"><a href="#!">${c.trim()}</a></li>`).join("")}
         </ul>
@@ -119,7 +124,12 @@ async function loadArticle() {
       <section class="article-content">
         ${content}
       </section>
+      <div class="article-views text-muted small mt-3" id="viewCounter">Loading views...</div>
     `;
+
+    // --- Track Page View + Update Counter ---
+    trackPageView(slug);
+
   } catch (err) {
     console.error("Error fetching article:", err);
     container.innerHTML = "<p>Error loading article.</p>";
@@ -150,3 +160,24 @@ function timeAgo(dateStr) {
   const year = postDate.getFullYear();
   return `${day} ${month} ${year}`;
 }
+
+
+// --- Track page view ---
+async function trackPageView(slug) {
+  try {
+    const res = await fetch(
+      `https://script.google.com/macros/s/AKfycbxWKE0dvNKnqimQn9JioWSFb9I5GvBcjHCqWUvMn8ng4GGpNv4gBGIjGsXITD7jl-Tl-Q/exec?action=trackView&slug=${encodeURIComponent(slug)}`
+    );
+    const data = await res.json();
+    console.log("Page view tracked:", data);
+    
+    // Optional: display view count in article
+    const metaDiv = document.querySelector(".text-muted.small");
+    if (metaDiv && data.views !== undefined) {
+      metaDiv.innerHTML += ` · <span>${data.views} views</span>`;
+    }
+  } catch (err) {
+    console.error("Error tracking view:", err);
+  }
+}
+

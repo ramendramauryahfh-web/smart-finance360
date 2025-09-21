@@ -42,3 +42,23 @@
     </small>
   </div>
 </footer>
+
+<!-- 🔹 Page View Tracking Script -->
+<script>
+  async function trackPageView(slug) {
+    const url = "https://script.google.com/macros/s/AKfycbzQzR48FWHNnvdxQmkyH1l3pQfkgXMMjMSePY1ub6q7tuZLMoOnRr-SceBFegRGxOoOWQ/exec"; // paste your Google Apps Script Web App URL
+    try {
+      await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: slug })
+      });
+    } catch (err) {
+      console.error("Page view error:", err);
+    }
+  }
+
+  // Auto-detect slug (e.g. "my-post.html" → "my-post")
+  const slug = window.location.pathname.split("/").pop().replace(".html", "");
+  trackPageView(slug);
+</script>
