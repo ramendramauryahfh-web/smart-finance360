@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Main -->
+  <main class="section">
+    <div class="container">
+      <div class="row">
+
+      <!-- Left Content -->
+      <div class="col-lg-8 mb-5 mb-lg-0">
+        <h1 class="mb-4">Contact Us</h1>
+        <p>If you have any questions, feedback, or collaboration ideas, feel free to reach out using the form below.</p>
+
+        <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form">
+          <div class="form-group mb-3">
+            <label for="name">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="email">Your Email</label>
+            <input type="email" class="form-control" id="email" name="_replyto" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="subject">Subject</label>
+            <input type="text" class="form-control" id="subject" name="subject">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="message">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="widget-blocks">
+            <div class="row">
+              
+              <!-- About Me Small -->
+              <div class="col-lg-12">
+                <div class="widget">
+                  <div class="widget-body text-center">
+                    <img loading="lazy" decoding="async" src="images/ram.jpeg" alt="About Me" class="w-100 author-thumb-sm d-block mb-3">
+                    <h2 class="widget-title my-3">Ramendra Kr Maurya</h2>
+                    <p class="mb-3">Hello, I’m Ramendra Kr. Maurya. A Content writer, Developer and Storyteller. Working as a Content writer at CoolTech Agency.</p> 
+                    <a href="about.html" class="btn btn-sm btn-outline-primary">Know More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+            <div id="sidebar"></div>
+          </div>
+
+        </div>
+      </div>
+
+              <!-- Recommended -->
+              <!-- <div class="col-lg-12 col-md-6">
+                <div class="widget">
+                  <h2 class="section-title mb-3">Recommended</h2>
+                  <div class="widget-body">
+                    <div class="widget-list" id="recommended-list">
+                      <p>Loading...</p>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- Categories -->
+              <!-- <div class="col-lg-12 col-md-6">
+                <div class="widget">
+                  <h2 class="section-title mb-3">Categories</h2>
+                  <div class="widget-body">
+                    <ul class="widget-list" id="category-list">
+                      <li>Loading...</li>
+                    </ul>
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- JS -->
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script>
+    // Load header & footer
+    async function includeHTML() {
+      const load = async (id, file) => {
+        const res = await fetch(file);
+        const text = await res.text();
+        document.getElementById(id).innerHTML = text;
+      };
+      await load("header", "header.html");
+      await load("footer", "footer.html");
+    }
+    includeHTML();
+
+    // Google Sheet Config
+    const sheetID = "YOUR_SHEET_ID"; // replace with your sheet id
+    const sheetName = "Sheet1";
+
+    // Load Categories
+    async function loadCategories() {
+      try {
+        const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const categories = {};
+        data.forEach(row => {
+          if (row.Category) {
+            let cats = row.Category.split(",").map(c => c.trim());
+            cats.forEach(cat => {
+              categories[cat] = (categories[cat] || 0) + 1;
+            });
+          }
+        });
+
+        let list = "";
+        Object.entries(categories).forEach(([cat, count]) => {
+          list += `<li><a href="category.html?cat=${encodeURIComponent(cat)}">${cat}<span class="ml-auto">(${count})</span></a></li>`;
+        });
+
+        document.getElementById("category-list").innerHTML = list;
+      } catch (e) {
+        document.getElementById("category-list").innerHTML = "<li>Error loading categories</li>";
+      }
+    }
+
+    // Load Recommended
+    async function loadRecommended() {
+      try {
+        const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        let html = "";
+        data.slice(0, 5).forEach(article => {
+          html += `
+            <a class="media align-items-center mb-3 d-block" href="article.html?slug=${article.Slug}">
+              ${article.ImageURL ? `<img loading="lazy" decoding="async" src="${article.ImageURL}" alt="${article.Title}" style="width:100px;height:70px;object-fit:cover;">` : `<span class="image-fallback image-fallback-xs">No Image</span>`}
+              <div class="media-body ml-3">
+                <h6 class="mb-1">${article.Title}</h6>
+                <p class="mb-0 small">${article.Excerpt ? article.Excerpt.substring(0,60) : ""}...</p>
+              </div>
+            </a>
+          `;
+        });
+
+        document.getElementById("recommended-list").innerHTML = html; // ✅ FIXED
+      } catch (e) {
+        document.getElementById("recommended-list").innerHTML = "<p>Error loading recommended</p>";
+      }
+    }
+
+    loadCategories();
+    loadRecommended();
+  </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Create Article (HTML Allowed)</title>
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+  <div id="header"></div>
+
+  <div class="container my-5">
+    <div class="card shadow rounded">
+      <div class="card-body p-4">
+        <h2 class="text-center mb-4">Create New Article</h2>
+        <form id="sheetForm">
+          
+          <div class="mb-3">
+            <label class="form-label">Title (HTML allowed)</label>
+            <textarea name="Title" class="form-control" rows="2" placeholder="<h1>My Title</h1>" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Slug (leave empty to auto-generate)</label>
+            <input type="text" name="Slug" class="form-control" placeholder="URL slug (optional)">
+          </div>
+
+          <!-- Hidden DateTime (auto current date+time) -->
+          <input type="hidden" name="DateTime" id="dateTime">
+
+          <div class="mb-3">
+            <label class="form-label">Read Time</label>
+            <input type="text" name="ReadTime" class="form-control" placeholder="e.g., 5 minutes" required>
+          </div>
+
+          <!-- Category Dropdown -->
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select name="Category" class="form-control" required>
+              <option value="">-- Select Category --</option>
+              <option value="Finance">Finance</option>
+              <option value="Investment">Investment</option>
+              <option value="Banking">Banking</option>
+              <option value="Technology">Technology</option>
+              <option value="Business">Business</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Excerpt</label>
+            <input type="text" name="Excerpt" class="form-control" placeholder="Short description" maxlength="200" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Meta Title (SEO)</label>
+            <input type="text" name="MetaTitle" class="form-control" placeholder="SEO Title (max 60 chars)" maxlength="60" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Meta Description (SEO)</label>
+            <textarea name="MetaDescription" class="form-control" rows="2" maxlength="160" placeholder="SEO Description (max 160 chars)" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Keywords</label>
+            <input type="text" name="Keywords" class="form-control" placeholder="e.g., finance, rupay, digital payments" required>
+            <div class="form-text">Comma-separated SEO keywords.</div>
+          </div>
+
+          <!-- Image Upload via Cloudinary -->
+          <div class="mb-3">
+            <label class="form-label">Image</label>
+            <input type="file" id="imageUpload" class="form-control" accept="image/*" required>
+            <input type="hidden" name="ImageURL" id="imageURL" required>
+            <input type="hidden" name="ImageName" id="imageName" required>
+            <div id="imagePreview" class="mt-2"></div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Author</label>
+            <input type="text" name="Author" class="form-control" placeholder="Author name" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Content (HTML allowed)</label>
+            <textarea name="Content" class="form-control" rows="8" placeholder="<p>Write your article content here</p>" required></textarea>
+          </div>
+
+          <!-- Publish Toggle -->
+          <div class="mb-3">
+            <label class="form-label">Publish</label>
+            <select name="Publish" class="form-control" required>
+              <option value="">-- Select --</option>
+              <option value="Y">Yes (Publish)</option>
+              <option value="N">No (Save as Draft)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <!-- Header & Footer Loader -->
+  <script>
+    async function includeHTML() {
+      const load = async (id, file) => {
+        const res = await fetch(file); 
+        const text = await res.text();
+        document.getElementById(id).innerHTML = text;
+      };
+      await load("header", "header.html");
+      await load("footer", "footer.html");
+    }
+    document.addEventListener("DOMContentLoaded", includeHTML);
+  </script>
+
+  <!-- Cloudinary Upload -->
+  <script>
+    const cloudName = "dxxcqjyn5";   // Your Cloudinary cloud name
+    const uploadPreset = "upload_blogs";    // Your unsigned preset
+
+    const imageUpload = document.getElementById("imageUpload");
+    const imageURLField = document.getElementById("imageURL");
+    const imageNameField = document.getElementById("imageName");
+    const imagePreview = document.getElementById("imagePreview");
+
+    imageUpload.addEventListener("change", async (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", uploadPreset);
+
+      try {
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+          method: "POST",
+          body: formData
+        });
+        const data = await res.json();
+
+        // Save Cloudinary response into hidden fields
+        imageURLField.value = data.secure_url;
+        imageNameField.value = data.original_filename;
+
+        // Show preview
+        imagePreview.innerHTML = `<img src="${data.secure_url}" alt="${data.original_filename}" class="img-fluid rounded mt-2" style="max-height:200px;">`;
+
+        alert("Image uploaded successfully!");
+      } catch (err) {
+        console.error("Cloudinary upload failed:", err);
+        alert("Image upload failed.");
+      }
+    });
+  </script>
+
+  <!-- Form Submission -->
+  <script>
+    const form = document.getElementById('sheetForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      let formData = Object.fromEntries(new FormData(form).entries());
+
+      // ✅ Auto-generate slug if user leaves it blank
+      if (!formData.Slug) {
+        let rawTitle = (formData.Title || "")
+          .replace(/<[^>]*>/g, "")   // remove HTML tags
+          .trim()
+          .toLowerCase();
+        
+        formData.Slug = rawTitle
+          .replace(/[^\w\s-]/g, "")  // remove special chars
+          .replace(/\s+/g, "-");     // replace spaces with hyphen
+      }
+
+      // ✅ Auto DateTime (current local time)
+      formData.DateTime = new Date().toLocaleString();
+
+      try {
+        const response = await fetch('https://sheetdb.io/api/v1/w906bwq9sxb04', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: formData })
+        });
+        const result = await response.json();
+        alert('Data submitted successfully!');
+        form.reset();
+        imagePreview.innerHTML = "";
+      } catch (error) {
+        console.error(error);
+        alert('Error submitting data.');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Category Posts</title>
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+</head>
+<body class="bg-light">
+      <div id="header"></div>
+
+
+  <div class="container mt-4">
+    <h1 id="category-title">Category</h1>
+    <div id="articles-list" class="row mt-3"></div>
+  </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    // 🔹 Get category from URL
+    const params = new URLSearchParams(window.location.search);
+    const selectedCat = params.get("cat");
+
+    if (!selectedCat) {
+      document.getElementById("articles-list").innerHTML =
+        "<p>No category selected.</p>";
+      return;
+    }
+
+    document.getElementById("category-title").innerText =
+      `Posts in "${selectedCat}"`;
+
+    try {
+      // 🔹 Fetch your sheet
+      const sheetID = "1TxdvMNgP6bN-566gtVo10qkI595Q76T9_nt8-G5SwBs";
+      const sheetName = "Sheet1";
+      const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      // 🔹 Filter posts by category
+      const filtered = data.filter(row =>
+        row.Category &&
+        row.Category.split(",").map(c => c.trim().toLowerCase())
+          .includes(selectedCat.toLowerCase())
+      );
+
+      // 🔹 Render posts
+      const list = document.getElementById("articles-list");
+      if (filtered.length === 0) {
+        list.innerHTML = "<p>No posts found for this category.</p>";
+      } else {
+        list.innerHTML = filtered.map(row => `
+          <div class="col-md-4 mb-3">
+            <div class="card h-100">
+              <img src="${row.ImageURL}" class="card-img-top" alt="${row.Title}">
+              <div class="card-body">
+                <h5 class="card-title">${row.Title}</h5>
+                <p class="card-text">${row.Excerpt || ""}</p>
+                <a href="article.html?slug=${row.Slug}" class="btn btn-primary">Read More</a>
+              </div>
+            </div>
+          </div>
+        `).join("");
+      }
+    } catch (err) {
+      document.getElementById("articles-list").innerHTML =
+        "<p>Error loading posts.</p>";
+      console.error("Fetch error:", err);
+    }
+  });
+</script>
+  <div id="footer"></div>
+
+</body>
+</html>
