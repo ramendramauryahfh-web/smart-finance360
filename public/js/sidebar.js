@@ -16,7 +16,7 @@
           ? `<img loading="lazy" decoding="async" src="${row.ImageURL}" alt="${row.Title}" class="w-100">`
           : `<span class="image-fallback image-fallback-xs">No Image</span>`;
 
-        if (index === 0) {
+        if (true) {
           return `
             <article class="card mb-4">
               <div class="card-image">
@@ -38,15 +38,15 @@
           `;
         }
 
-        return `
-          <a class="media align-items-center mb-2" href="article.html?slug=${row.Slug}">
-            ${img}
-            <div class="media-body ml-3">
-              <h3 style="margin-top:-5px">${row.Title}</h3>
-              <p class="mb-0 small">${row.Excerpt || ""}</p>
-            </div>
-          </a>
-        `;
+        // return `
+        //   <a class="media align-items-center mb-2" href="article.html?slug=${row.Slug}">
+        //     ${img}
+        //     <div class="media-body ml-3">
+        //       <h3 style="margin-top:-5px">${row.Title}</h3>
+        //       <p class="mb-0 small">${row.Excerpt || ""}</p>
+        //     </div>
+        //   </a>
+        // `;
       }).join("");
     }
 
