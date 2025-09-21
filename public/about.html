@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Smart Finance 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="description" content="This is meta description">
+  <meta name="author" content="Themefisher">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+  <!-- theme meta -->
+  <meta name="theme-name" content="reporter" />
+
+  <!-- # Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- # CSS Plugins -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+
+  <!-- # Main Style Sheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header"></div>
+
+  <main class="section">
+    <div class="container">
+      <div class="row">
+
+        <!-- Main Content -->
+        <div class="col-lg-8 mx-auto mb-5 mb-lg-0">
+          <img loading="lazy" decoding="async" src="images/ram.jpeg" class="img-fluid w-100 mb-4" alt="Author Image">
+          <h1 class="mb-4">Ramendra Kr Maurya</h1>
+          <div class="content">
+            <p>Hello, I&rsquo;m Ramendra Kr Maurya. A Content writer, Developer and Storyteller. Working as a Content writer at CoolTech Agency. 
+            Quam nihil enim maxime corporis cumque totam aliquid nam sint inventore optio modi neque laborum officiis necessitatibus, facilis placeat pariatur! 
+            Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, porro sint minima similique magni perferendis fuga! Optio vel ipsum excepturi 
+            tempore reiciendis id quidem? Vel in, doloribus debitis nesciunt fugit sequi magnam accusantium modi neque quis, vitae velit, pariatur harum autem a! 
+            Velit impedit atque maiores animi possimus asperiores natus repellendus excepturi sint architecto eligendi non, omnis nihil. Facilis, doloremque illum. 
+            Fugit optio laborum minus debitis natus illo perspiciatis corporis voluptatum rerum laboriosam.</p>
+
+            <blockquote>
+              <p>Facilis, doloremque illum. Fugit optio laborum minus debitis natus illo perspiciatis corporis voluptatum rerum laboriosam.</p>
+            </blockquote>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque totam aliquid nam sint inventore optio 
+            modi neque laborum officiis necessitatibus, facilis placeat pariatur! Voluptatem, sed harum pariatur adipisci voluptates voluptatum cumque, 
+            porro sint minima similique magni perferendis fuga! Optio vel ipsum excepturi tempore reiciendis id quidem.</p>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          <div class="widget-blocks">
+            <div class="row">
+              
+              <!-- About Me Small -->
+              <div class="col-lg-12">
+                <div class="widget">
+                  <div class="widget-body text-center">
+                    <img loading="lazy" decoding="async" src="images/ram.jpeg" alt="About Me" class="w-100 author-thumb-sm d-block mb-3">
+                    <h2 class="widget-title my-3">Ramendra Kr Maurya</h2>
+                    <p class="mb-3">Hello, I’m Ramendra Kr. Maurya. A Content writer, Developer and Storyteller. Working as a Content writer at CoolTech Agency.</p> 
+                    <a href="about.html" class="btn btn-sm btn-outline-primary">Know More</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recommended -->
+              <div class="col-lg-12 col-md-6">
+                <div class="widget">
+                  <h2 class="section-title mb-3">Recommended</h2>
+                  <div class="widget-body">
+                    <div class="widget-list" id="recommended-list">
+                      <p>Loading...</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Categories -->
+              <div class="col-lg-12 col-md-6">
+                <div class="widget">
+                  <h2 class="section-title mb-3">Categories</h2>
+                  <div class="widget-body">
+                    <ul class="widget-list" id="category-list">
+                      <li>Loading...</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Load header & footer -->
+  <script>
+    async function includeHTML() {
+      const load = async (id, file) => {
+        const res = await fetch(file); 
+        const text = await res.text();
+        document.getElementById(id).innerHTML = text;
+      };
+      await load("header", "header.html");
+      await load("footer", "footer.html");
+    }
+    document.addEventListener("DOMContentLoaded", includeHTML);
+  </script>
+
+  <!-- # JS Plugins -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="js/script.js"></script>
+
+  <!-- Recommended Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const sheetID = "1TxdvMNgP6bN-566gtVo10qkI595Q76T9_nt8-G5SwBs"; 
+        const sheetName = "Sheet1";
+        const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const recommended = data.slice(0, 5); 
+        const container = document.getElementById("recommended-list");
+        container.innerHTML = recommended.map((row, index) => {
+          const img = row.ImageURL ? 
+            `<img loading="lazy" decoding="async" src="${row.ImageURL}" alt="${row.Title}" class="w-100">` 
+            : `<span class="image-fallback image-fallback-xs">No Image Specified</span>`;
+
+          if (index === 0) {
+            return `
+              <article class="card mb-4">
+                <div class="card-image">
+                  <div class="post-info">
+                    <span class="text-uppercase">${row.ReadTime || "Few minutes"} read</span>
+                  </div>
+                  ${img}
+                </div>
+                <div class="card-body px-0 pb-1">
+                  <h3><a class="post-title post-title-sm" href="article.html?slug=${row.Slug}">
+                    ${row.Title}
+                  </a></h3>
+                  <p class="card-text">${row.Excerpt || ""}</p>
+                  <div class="content">
+                    <a class="read-more-btn" href="article.html?slug=${row.Slug}">Read Full Article</a>
+                  </div>
+                </div>
+              </article>
+            `;
+          }
+          return `
+            <a class="media align-items-center mb-2" href="article.html?slug=${row.Slug}">
+              ${img}
+              <div class="media-body ml-3">
+                <h3 style="margin-top:-5px">${row.Title}</h3>
+                <p class="mb-0 small">${row.Excerpt || ""}</p>
+              </div>
+            </a>
+          `;
+        }).join("");
+      } catch (err) {
+        document.getElementById("recommended-list").innerHTML =
+          "<p>Error loading recommended posts.</p>";
+      }
+    });
+  </script>
+
+  <!-- Categories Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const sheetID = "1TxdvMNgP6bN-566gtVo10qkI595Q76T9_nt8-G5SwBs"; 
+        const sheetName = "Sheet1"; 
+        const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const categoryCounts = {};
+        data.forEach(row => {
+          if (row.Category) {
+            row.Category.split(",").map(c => c.trim()).forEach(cat => {
+              if (cat) {
+                categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+              }
+            });
+          }
+        });
+
+        const categoryList = document.getElementById("category-list");
+        if (Object.keys(categoryCounts).length === 0) {
+          categoryList.innerHTML = "<li>No categories found</li>";
+        } else {
+          categoryList.innerHTML = Object.entries(categoryCounts)
+            .map(([cat, count]) => `
+              <li>
+                <a href="category.html?cat=${encodeURIComponent(cat)}">
+                  ${cat} <span class="ml-auto">(${count})</span>
+                </a>
+              </li>
+            `)
+            .join("");
+        }
+      } catch (err) {
+        document.getElementById("category-list").innerHTML =
+          "<li>Error loading categories</li>";
+      }
+    });
+  </script>
+</body>
+</html>
