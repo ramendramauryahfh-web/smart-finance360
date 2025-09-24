@@ -3,37 +3,73 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://www.smartfinance360.com/</loc>
-    <lastmod>2025-09-19</lastmod>
+    <loc>https://smartfinance360.com/</loc>
+    <lastmod>2025-09-21</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Blog / Articles -->
   <url>
-    <loc>https://www.smartfinance360.com/articles.html</loc>
+    <loc>https://smartfinance360.com/articles.html</loc>
     <lastmod>2025-09-19</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- About Page -->
   <url>
-    <loc>https://www.smartfinance360.com/about.html</loc>
-    <lastmod>2025-09-19</lastmod>
-    <priority>0.7</priority>
+    <loc>https://smartfinance360.com/about.html</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Contact Page -->
   <url>
-    <loc>https://www.smartfinance360.com/contact.html</loc>
-    <lastmod>2025-09-19</lastmod>
-    <priority>0.7</priority>
+    <loc>https://smartfinance360.com/contact.html</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Example Individual Blog Post -->
+  <!-- Banking Category -->
   <url>
-    <loc>https://www.smartfinance360.com/blog/post1.html</loc>
-    <lastmod>2025-09-15</lastmod>
-    <priority>0.8</priority>
+    <loc>https://smartfinance360.com/banking.html</loc>
+    <lastmod>2025-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Business Category -->
+  <url>
+    <loc>https://smartfinance360.com/business.html</loc>
+    <lastmod>2025-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Finance Category -->
+  <url>
+    <loc>https://smartfinance360.com/finance.html</loc>
+    <lastmod>2025-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Investment Category -->
+  <url>
+    <loc>https://smartfinance360.com/investment.html</loc>
+    <lastmod>2025-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Technology Category -->
+  <url>
+    <loc>https://smartfinance360.com/technology.html</loc>
+    <lastmod>2025-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>

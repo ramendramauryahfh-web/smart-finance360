@@ -58,6 +58,7 @@ async function loadArticle() {
     const author = post.Author || "Admin";
     const content = post.Content || "";
     const pageViews= post.Views || 112
+    const tags= post.Keywords || "";
 
     // --- Update SEO meta tags ---
     document.title = post.MetaTitle || title || "Smart Finance 360";
@@ -117,13 +118,62 @@ async function loadArticle() {
         <ul class="post-meta mt-2">
           ${categories.split(",").map(c => `<li style="display:inline; margin-right:5px;"><a href="#!">${c.trim()}</a></li>`).join("")}
         </ul>
+
+         
       </header>
+  
+<!-- Social Share Buttons -->
+<div class="social-share mt-4">
+  <h5>Share this article:</h5>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="social-icon fb">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(window.location.href)}" target="_blank" class="social-icon tw">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank" class="social-icon li">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + window.location.href)}" target="_blank" class="social-icon wa">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
       <figure class="mb-4">
         <img src="${image}" alt="${title}" class="w-100 rounded">
       </figure>
       <section class="article-content">
         ${content}
       </section>
+        <!-- Keywords -->
+        <div class="article-keywords mt-2">
+  <strong>Keywords:</strong> 
+  ${tags?.split(",").map(k => `
+    <a href="search.html?keyword=${encodeURIComponent(k.trim())}" 
+       class="badge bg-light text-dark" 
+       style="margin-right:5px; text-decoration:none;">
+       ${k.trim()}
+    </a>`).join("")}
+</div>
+
+       <!-- Social Share Buttons -->
+<div class="social-share mt-4">
+  <h5>Share this article:</h5>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="social-icon fb">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(window.location.href)}" target="_blank" class="social-icon tw">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank" class="social-icon li">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + window.location.href)}" target="_blank" class="social-icon wa">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+
       <div class="article-views text-muted small mt-3" id="viewCounter">Loading views...</div>
     `;
 

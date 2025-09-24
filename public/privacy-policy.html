@@ -1,133 +1,225 @@
 <!DOCTYPE html>
-
-<!--
- // WEBSITE: https://themefisher.com
- // TWITTER: https://twitter.com/themefisher
- // FACEBOOK: https://www.facebook.com/themefisher
- // GITHUB: https://github.com/themefisher/
--->
-
-<html lang="en-us">
-
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Reporter - HTML Blog Template</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-	<meta name="description" content="This is meta description">
-	<meta name="author" content="Themefisher">
-	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Finance 360 - Privacy Policy</title>
 
-	<!-- # Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- # CSS Plugins -->
-	<link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <style>
+    body { padding-top: 80px; font-family: Arial, sans-serif; }
 
-	<!-- # Main Style Sheet -->
-	<link rel="stylesheet" href="css/style.css">
+    /* Navbar */
+    header.navigation {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(26,31,54,0.95);
+      z-index: 1050;
+      transition: all 0.3s ease;
+    }
+    header.navigation.sticky { background: rgba(26,31,54,1); }
+
+    .navbar-nav .nav-link { color: #fff; font-weight: 500; }
+    .navbar-nav .nav-link.active { color: #ffcd00; }
+    .navbar-nav .nav-link:hover { color: #ffcd00; }
+
+    .search input {
+      border-radius: 15px;
+      border: none;
+      padding: 4px 12px;
+      height: 30px;
+      width: 150px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .search input:focus {
+      width: 220px;
+      outline: none;
+      box-shadow: 0 0 6px rgba(255,205,0,0.5);
+    }
+
+    /* Cookie consent popup */
+    #cookieConsent {
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 100%;
+      background: rgba(26,31,54,0.95);
+      color: #fff;
+      padding: 15px 20px;
+      z-index: 9999;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+    #cookieConsent button {
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #acceptCookies { background: #ffcd00; color: #000; }
+    #rejectCookies { background: #444; color: #fff; }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+    }
+    footer a { color: #ffcd00; text-decoration: none; }
+  </style>
 </head>
 
 <body>
 
-<header class="navigation">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light px-0">
-      <a class="navbar-brand order-1 py-0" href="index.html">
-        <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
-      </a>
-      <div class="navbar-actions order-3 ml-0 ml-md-4">
-        <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
-          data-target="#navigation"> <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <form action="#!" class="search order-lg-3 order-md-2 order-3 ml-auto">
-        <input id="search-query" name="s" type="search" placeholder="Search..." autocomplete="off">
-      </form>
-      <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
-        <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-          <li class="nav-item"> <a class="nav-link" href="about.html">About Me</a>
-          </li>
-          <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Articles
-            </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="travel.html">Travel</a>
-              <a class="dropdown-item" href="travel.html">Lifestyle</a>
-              <a class="dropdown-item" href="travel.html">Cruises</a>
-            </div>
-          </li>
-          <li class="nav-item"> <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-</header>
+<!-- Header -->
+<div id="header"></div>
 
+<!-- Main Content -->
 <main>
-	<section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mx-auto">
-					<div class="breadcrumbs mb-4"> <a href="index.html">Home</a>
-						<span class="mx-1">/</span>  <a href="#!">Privacy policy</a>
-					</div>
-				</div>
-				<div class="col-lg-8 mx-auto mb-5 mb-lg-0">
-					<h1 class="mb-4">Our Privacy Policy</h1>
-					<div class="content">
-						<h4 id="responsibility-of-contributors">Responsibility of Contributors</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus. Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed</p>
-						<p>pretium, aliquam sit. Praesent elementum magna amet, tincidunt eros, nibh in leo. Malesuada purus, lacus, at aliquam suspendisse tempus. Quis tempus amet, velit nascetur sollicitudin. At sollicitudin eget amet in. Eu velit nascetur sollicitudin erhdfvssfvrgss eget viverra nec elementum. Lacus, facilisis tristique lectus in.</p>
-						<h4 id="gathering-of-personal-information">Gathering of Personal Information</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus. Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed</p>
-						<h4 id="protection-of--personal--information">Protection of Personal- Information</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat quisque aliquam sagittis. Sem turpis sed viverra massa gravida pharetra. Non dui dolor potenti eu dignissim fusce. Ultrices amet, in curabitur a arcu a lectus morbi id. Iaculis erat sagittis in tortor cursus.</p>
-						<p>Molestie urna eu tortor, erat scelerisque eget. Nunc hendrerit sed interdum lacus. Lorem quis viverra sed Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus, donec nunc eros, ullamcorper id feugiat</p>
-						<h4 id="privacy-policy-changes">Privacy Policy Changes</h4>
-						<ol>
-							<li>Sll the Themefisher items are designed to be with the latest , We check all</li>
-							<li>comments that threaten or harm the reputation of any person or organization</li>
-							<li>personal information including, but limited to, email addresses, telephone numbers</li>
-							<li>Any Update come in The technology Customer will get automatic Notification.</li>
-						</ol>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</main>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="breadcrumbs mb-4">
+            <a href="index.html">Home</a> <span class="mx-1">/</span> Privacy Policy
+          </div>
+        </div>
+        <div class="col-lg-8 mx-auto mb-5 mb-lg-0">
+          <h1 class="mb-4">Privacy Policy</h1>
+          <div class="content">
 
-<footer class="bg-dark mt-5">
-  <div class="container section">
-    <div class="row">
-      <div class="col-lg-10 mx-auto text-center">
-        <a class="d-inline-block mb-4 pb-2" href="index.html">
-          <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo-white.png" alt="Reporter Hugo">
-        </a>
-        <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
-          <li class="nav-item my-0"> <a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="article.html">Elements</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="404.html">404 Page</a></li>
-        </ul>
+            <h4>Information We Collect</h4>
+            <p>We may collect personal information such as your IP address, device information, browser type, and pages visited on our site. This information is collected via cookies and similar technologies.</p>
+
+            <h4>Use of Information</h4>
+            <p>The information collected may be used to:</p>
+            <ul>
+              <li>Provide and improve our services.</li>
+              <li>Deliver personalized advertisements.</li>
+              <li>Analyze traffic using tools like Google Analytics.</li>
+              <li>Prevent fraud or abuse.</li>
+            </ul>
+
+            <h4>Google AdSense and Third-Party Advertising</h4>
+            <p>We use Google AdSense to display ads on our site. Google, as a third-party vendor, uses cookies to serve ads based on your previous visits to our website or other websites.</p>
+            <p>Google may use the information collected through cookies and anonymous identifiers to deliver relevant ads. You can learn more about Google's privacy practices at <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a>.</p>
+
+            <h4>Cookies and Tracking</h4>
+            <p>Our site uses cookies to enhance user experience and display relevant ads. Cookies are small text files stored on your device. You can control cookies through your browser settings.</p>
+
+            <h4>Third-Party Privacy Policies</h4>
+            <p>Our Privacy Policy does not apply to external websites or services linked from our site. We encourage you to review the privacy policies of those third-party sites.</p>
+
+            <h4>Your Consent</h4>
+            <p>By using our website, you consent to the collection and use of your information as described in this Privacy Policy.</p>
+
+            <h4>Opt-Out Options</h4>
+            <p>You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads/optout">Google Ads Settings</a> or adjusting your browser settings to disable cookies.</p>
+
+            <h4>Changes to This Privacy Policy</h4>
+            <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with the effective date updated.</p>
+
+            <h4>Contact Us</h4>
+            <p>If you have any questions about this Privacy Policy or your personal data, please contact us at: <a href="mailto:ramendramauryahfh@gmail.com">ramendramauryahfh@gmail.com</a></p>
+
+          </div>
+        </div>
       </div>
     </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<div id="footer"></div>
+
+<!-- GDPR/CCPA Cookie Consent -->
+<div id="cookieConsent">
+  <div style="flex:1; min-width:200px;">
+    We use cookies to improve your experience and show personalized ads. By clicking "Accept", you agree to our <a href="privacy-policy.html" style="color:#ffcd00;">Privacy Policy</a>.
   </div>
-  <div class="copyright bg-dark content">Designed &amp; Developed By <a href="https://themefisher.com/">Themefisher</a></div>
-</footer>
+  <div style="margin-left:15px; display:flex; gap:10px; flex-wrap:wrap;">
+    <button id="acceptCookies">Accept</button>
+    <button id="rejectCookies">Reject</button>
+  </div>
+</div>
 
+<!-- Placeholder for Ads -->
+<div id="adsContainer" class="container my-4"></div>
 
-<!-- # JS Plugins -->
+<!-- JS Plugins -->
 <script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-<!-- Main Script -->
-<script src="js/script.js"></script>
+<script>
+  // Sticky Navbar
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector("header.navigation");
+    if (header) {
+      header.classList.toggle("sticky", window.scrollY > 50);
+    }
+  });
+
+  // Navbar Active Link
+  let currentPath = window.location.pathname.split("/").pop();
+  if (!currentPath) currentPath = "index.html";
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === currentPath);
+  });
+
+  // Header Search Redirect
+  const headerForm = document.getElementById("headerSearchForm");
+  const headerInput = document.getElementById("headerSearchInput");
+  if (headerForm && headerInput) {
+    headerForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const query = headerInput.value.trim();
+      if (query) window.location.href = `search.html?keyword=${encodeURIComponent(query)}`;
+    });
+    headerInput.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const query = headerInput.value.trim();
+        if (query) window.location.href = `search.html?keyword=${encodeURIComponent(query)}`;
+      }
+    });
+  }
+
+  // GDPR/CCPA Cookie Logic
+  const cookieConsent = document.getElementById('cookieConsent');
+  const acceptBtn = document.getElementById('acceptCookies');
+  const rejectBtn = document.getElementById('rejectCookies');
+  const adsContainer = document.getElementById('adsContainer');
+
+  function loadAds() {
+    if (adsContainer) {
+      adsContainer.innerHTML = `<p>Google Ads code goes here. Replace this with your actual ad script.</p>`;
+    }
+  }
+
+  if (localStorage.getItem('cookieConsent')) {
+    cookieConsent.style.display = 'none';
+    if (localStorage.getItem('cookieConsent') === 'accepted') loadAds();
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    cookieConsent.style.display = 'none';
+    loadAds();
+  });
+
+  rejectBtn.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'rejected');
+    cookieConsent.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
