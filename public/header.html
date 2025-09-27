@@ -92,6 +92,13 @@
     color: rgb(255 255 255 / 90%);
 }
 
+@media (max-width: 991px) {
+    .navigation .navbar-nav {
+        background-color: #896e6e !important;
+        padding: 15px 0;
+        border-radius: 0;
+    }
+}
 
 .search input:focus {
   width: 220px; /* expands on focus */
@@ -167,24 +174,27 @@ header.navigation.sticky {
         </a> 
 
         <!-- Toggler -->
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navigation">
+         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+        <!-- <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
 
         <!-- Menu -->
-        <div class="collapse navbar-collapse text-center" id="navigation">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <!-- <li class="nav-item"><a class="nav-link" href="new-post.html">+ New Post</a></li> -->
-            <li class="nav-item"><a class="nav-link" href="finance.html">Finance</a></li>
-            <li class="nav-item"><a class="nav-link" href="investment.html">Investment</a></li>
-            <li class="nav-item"><a class="nav-link" href="banking.html">Banking</a></li>
-            <li class="nav-item"><a class="nav-link" href="technology.html">Technology</a></li>
-            <li class="nav-item"><a class="nav-link" href="business.html">Business</a></li>
-        
-            <li class="nav-item"><a class="nav-link" href="motivational.html">Motivational</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-</ul>
+        <div class="collapse navbar-collapse" id="navigation">
+  <ul class="navbar-nav mx-auto">
+    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+    <!-- <li class="nav-item"><a class="nav-link" href="new-post.html">+ New Post</a></li> -->
+    <li class="nav-item"><a class="nav-link" href="finance.html">Finance</a></li>
+    <li class="nav-item"><a class="nav-link" href="investment.html">Investment</a></li>
+    <li class="nav-item"><a class="nav-link" href="banking.html">Banking</a></li>
+    <li class="nav-item"><a class="nav-link" href="technology.html">Technology</a></li>
+    <li class="nav-item"><a class="nav-link" href="business.html">Business</a></li>
+    <li class="nav-item"><a class="nav-link" href="motivational.html">Motivational</a></li>
+    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+  </ul>
 
           <!-- Search -->
           <form class="search d-none d-md-block ml-lg-3">
