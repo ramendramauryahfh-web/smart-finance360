@@ -4,6 +4,7 @@ Disallow: /admin/
 Disallow: /login/
 Disallow: /wp-admin/     # Agar WordPress hota
 Disallow: /cgi-bin/
+Disallow: /articles.html
 Allow: /
 
 # Sitemap Location

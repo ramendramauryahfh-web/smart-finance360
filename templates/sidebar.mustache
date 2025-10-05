@@ -1,0 +1,196 @@
+<div class="widget-blocks">
+  <style>
+    /* Sidebar styling */
+    .widget-blocks .widget {
+      margin-bottom: 30px;
+    }
+
+    .widget-blocks .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ffcd00;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .widget-blocks .widget-list li {
+      list-style: none;
+      margin-bottom: 8px;
+    }
+
+    .widget-blocks .widget-list li a {
+      text-decoration: none;
+      color: #1a1f36;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .widget-blocks .widget-list li a:hover {
+      color: #ffcd00;
+    }
+
+    .widget-blocks .card {
+      border: 1px solid #e1e1e1;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .widget-blocks .card:hover {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .widget-blocks .card-image {
+      position: relative;
+    }
+
+    .widget-blocks .card-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .widget-blocks .post-info {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      border-radius: 3px;
+    }
+
+    .widget-blocks .card-body {
+      padding: 10px 5px;
+    }
+
+    .widget-blocks .post-title-sm {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #1a1f36;
+      text-decoration: none;
+    }
+
+    .widget-blocks .post-title-sm:hover {
+      color: #ffcd00;
+    }
+
+    .widget-blocks .read-more-btn {
+      font-size: 0.875rem;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .widget-blocks .read-more-btn:hover {
+      text-decoration: underline;
+      color: #ffcd00;
+    }
+
+    .image-fallback-xs {
+      display: inline-block;
+      width: 100%;
+      height: 120px;
+      background: #f1f1f1;
+      text-align: center;
+      line-height: 120px;
+      color: #999;
+      font-size: 0.875rem;
+    }
+  </style>
+
+  <div class="row">
+    <!-- Recommended -->
+    <div class="col-lg-12 col-md-6">
+      <div class="widget">
+        <h2 class="section-title mb-3">Recommended</h2>
+        <div class="widget-body">
+          <div class="widget-list" id="recommended-list">
+            <p>Loading...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="col-lg-12 col-md-6">
+      <div class="widget">
+        <h2 class="section-title mb-3">Categories</h2>
+        <div class="widget-body">
+          <ul class="widget-list" id="category-list">
+            <li>Loading...</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar JS -->
+  <script>
+  (async function() {
+    const url = "https://script.google.com/macros/s/AKfycbyvaD63Zj2HtiGco4vSOhbUCbpjLn_clCZgeBLFlHavhhPoaS1JP8uVT0j50X2wJ7V7/exec?action=sidebar&limit=5";
+
+    try {
+      const res = await fetch(url);
+      const payload = await res.json();
+
+      // --- Recommended ---
+      const recommended = payload.recommended || [];
+      const recContainer = document.getElementById("recommended-list");
+
+      if (recContainer) {
+        recContainer.innerHTML = recommended.map(row => {
+          const slug = row.Slug ? row.Slug : row.Title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+          const img = row.ImageURL
+            ? `<img loading="lazy" decoding="async" src="${row.ImageURL}" alt="${row.Title}" class="w-100">`
+            : `<span class="image-fallback-xs">No Image</span>`;
+          return `
+            <article class="card mb-4">
+              <div class="card-image">
+                <div class="post-info">
+                  <span class="text-uppercase">${row.ReadTime || "Few minutes"} read</span>
+                </div>
+                ${img}
+              </div>
+              <div class="card-body px-0 pb-1">
+                <h3><a class="post-title post-title-sm" href="{{root}}articles/${slug}.html">${row.Title}</a></h3>
+                <p class="card-text">${row.Excerpt || ""}</p>
+                <div class="content">
+                  <a class="read-more-btn" href="{{root}}articles/${slug}.html">Read Full Article</a>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      // --- Categories ---
+      const categories = payload.categories || {};
+      const categoryList = document.getElementById("category-list");
+
+      if (categoryList) {
+        if (Object.keys(categories).length === 0) {
+          categoryList.innerHTML = "<li>No categories found</li>";
+        } else {
+          categoryList.innerHTML = Object.entries(categories)
+            .map(([cat, count]) => `
+              <li>
+                <a href="{{root}}category.html?cat=${encodeURIComponent(cat)}">
+                  ${cat} <span class="ml-auto">(${count})</span>
+                </a>
+              </li>
+            `).join("");
+        }
+      }
+    } catch (err) {
+      console.error("Sidebar fetch error:", err);
+      const rc = document.getElementById("recommended-list");
+      const cl = document.getElementById("category-list");
+      if (rc) rc.innerHTML = "<p>Error loading recommended posts.</p>";
+      if (cl) cl.innerHTML = "<li>Error loading categories</li>";
+    }
+  })();
+  </script>
+</div>

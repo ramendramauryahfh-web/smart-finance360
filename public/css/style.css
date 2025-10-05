@@ -972,3 +972,18 @@ footer .section {
 .social-share .social-icon.tw { color: #00acee; }
 .social-share .social-icon.li { color: #0077b5; }
 .social-share .social-icon.wa { color: #25d366; }
+
+/* Article loader spinner (centered) */
+#article-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  max-height: 800px;
+  width: 100%;
+}
+
+.social-share .social-icon i {
+  font-size: 28px;
+  margin-right: 10px;
+}

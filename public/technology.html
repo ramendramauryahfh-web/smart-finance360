@@ -18,9 +18,19 @@
             <h2 class="section-title">Technology Articles</h2>
           </div>
           <div class="col-lg-8 mb-5 mb-lg-0">
-            <div class="row" id="articles-container">
-              <h3>Loading posts...</h3>
-            </div>
+            <div class="row" id="articles-row">
+                <div id="article-loader" class="w-100">
+                  <div
+                    class="spinner-border text-warning"
+                    role="status"
+                    style="width: 3rem; height: 3rem"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <div id="articles-container" class="row"></div>
+                <!-- added class="row" -->
+              </div>
             <div class="text-center mt-4">
               <button id="load-more-btn" class="btn btn-primary d-none">Load More</button>
             </div>

@@ -39,11 +39,13 @@ async function loadArticle() {
     return;
   }
 
-  container.innerHTML = "<p>Loading article...</p>";
+  // Spinner is already present in the HTML, so no need to add it here
 
   try {
     const res = await fetch(`https://script.google.com/macros/s/AKfycbxI9pqGtlQFtd0e6CM3IDsfn3eyz2yOx35FgnTzaOMa-fHvcao8ScZoSXuDtnccV8_Y/exec?action=article&slug=${encodeURIComponent(slug)}`);
     const post = await res.json();
+
+    console.log("Fetched post:", post); // Debug: See what you get
 
     if (post.error) {
       container.innerHTML = `<p>${post.error}</p>`;
@@ -103,6 +105,32 @@ async function loadArticle() {
       }
       el.setAttribute('content', tag.content);
     });
+
+    // --- Update breadcrumb with category and article title ---
+    const breadcrumbCategory = document.getElementById('breadcrumb-category');
+    const breadcrumbCategoryName = breadcrumbCategory?.querySelector('[itemprop="name"]');
+    const breadcrumbCategoryLink = breadcrumbCategory?.querySelector('a[itemprop="item"]');
+    const breadcrumbTitle = document.querySelector('li.breadcrumb-item.active [itemprop="name"]');
+
+    if (categories && breadcrumbCategory && breadcrumbCategoryName && breadcrumbCategoryLink) {
+      // Use the first category if multiple
+      const firstCategory = categories.split(',')[0].trim();
+      breadcrumbCategory.style.display = '';
+      breadcrumbCategoryName.textContent = firstCategory;
+      breadcrumbCategoryLink.href = `category.html?category=${encodeURIComponent(firstCategory)}`;
+    } else if (breadcrumbCategory) {
+      breadcrumbCategory.style.display = 'none';
+    }
+
+    if (breadcrumbTitle) {
+      if (title && title.trim() !== "") {
+        breadcrumbTitle.textContent = title;
+      } else if (slug) {
+        breadcrumbTitle.textContent = slug.replace(/[-_]/g, " ");
+      } else {
+        breadcrumbTitle.textContent = "Article";
+      }
+    }
 
     // --- Render Article ---
     container.innerHTML = `
@@ -177,6 +205,9 @@ async function loadArticle() {
       <div class="article-views text-muted small mt-3" id="viewCounter">Loading views...</div>
     `;
 
+    // Remove the loader spinner after content is ready
+    document.getElementById('article-loader')?.remove();
+
     // --- Track Page View + Update Counter ---
     trackPageView(slug);
 
@@ -184,6 +215,11 @@ async function loadArticle() {
     console.error("Error fetching article:", err);
     container.innerHTML = "<p>Error loading article.</p>";
   }
+}
+
+function renderArticle(articleData) {
+  // ...your rendering logic...
+  document.getElementById('article-loader')?.remove(); // Remove spinner after loading
 }
 
 // --- Helper: Format date as "time ago" ---

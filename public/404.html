@@ -9,63 +9,250 @@
 
 <html lang="en-us">
 
-<head>
-	<meta charset="utf-8">
-	<title>Reporter - HTML Blog Template</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-	<meta name="description" content="This is meta description">
-	<meta name="author" content="Themefisher">
-	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-	<link rel="icon" href="images/favicon.png" type="image/x-icon">
-
-	<!-- # Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-	<!-- # CSS Plugins -->
-	<link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
-
-	<!-- # Main Style Sheet -->
-	<link rel="stylesheet" href="css/style.css">
-</head>
 
 <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Finance 360</title>
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-<header class="navigation">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light px-0">
-      <a class="navbar-brand order-1 py-0" href="index.html">
-        <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
-      </a>
-      <div class="navbar-actions order-3 ml-0 ml-md-4">
-        <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
-          data-target="#navigation"> <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <form action="#!" class="search order-lg-3 order-md-2 order-3 ml-auto">
-        <input id="search-query" name="s" type="search" placeholder="Search..." autocomplete="off">
-      </form>
-      <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
-        <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-          <li class="nav-item"> <a class="nav-link" href="about.html">About Me</a>
-          </li>
-          <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Articles
-            </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="travel.html">Travel</a>
-              <a class="dropdown-item" href="travel.html">Lifestyle</a>
-              <a class="dropdown-item" href="travel.html">Cruises</a>
-            </div>
-          </li>
-          <li class="nav-item"> <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-</header>
+  <style>
+    /* ---------- Navbar ---------- */
+    header.navigation {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(33, 37, 41, 0.95); /* semi-transparent dark */
+      transition: all 0.3s ease;
+      z-index: 1050;
+      height: 70px;
+      padding: 0;
+    }
+
+    header.navigation.sticky {
+      background: rgba(33, 37, 41, 1); /* fully opaque on scroll */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      height: 60px;
+    }
+
+    /* Navbar Brand / Logo */
+
+    header.navigation.sticky .navbar-brand img {
+      height: 40px;
+    }
+
+    /* Navbar Links */
+    .navbar-nav .nav-link {
+      color: #f8f9fa;
+      font-weight: 500;
+      padding: 10px 18px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #ffcd00; /* golden highlight */
+    }
+
+    /* Underline hover effect */
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: #ffcd00;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      width: 60%;
+    }
+
+   /* Low-height search input */
+.search input {
+  border-radius: 15px !important; /* slightly rounded */
+  border: none;
+  padding: 4px 12px; /* smaller padding for low height */
+  height: 30px; /* reduced height */
+  width: 150px;
+  background-color: #fff;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand img {
+  height: 55px;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255 255 255 / 90%);
+}
+
+@media (max-width: 991px) {
+    .navigation .navbar-nav {
+        background-color: #896e6e !important;
+        padding: 15px 0;
+        border-radius: 0;
+    }
+}
+
+.search input:focus {
+  width: 220px; /* expands on focus */
+  box-shadow: 0 0 6px rgba(255, 205, 0, 0.5); /* subtle focus glow */
+  outline: none;
+}
+
+
+    /* Add space below fixed header */
+body {
+  padding-top: 80px; /* same as header height (adjust if sticky height changes) */
+}
+
+/* Change navbar color to navy */
+header.navigation {
+  background: rgba(26, 31, 54, 0.95); /* deep navy */
+}
+
+header.navigation.sticky {
+  background: rgba(26, 31, 54, 1); /* fully opaque on scroll */
+}
+
+
+    /* Toggler button */
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 205, 0, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .search input {
+        width: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-brand img {
+        height: 35px;
+      }
+      .search input {
+        width: 80px;
+      }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-276VFWZL9H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-276VFWZL9H');
+  </script>
+
+  <!-- adsense -->
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9846205135944521"
+     crossorigin="anonymous"></script>
+     <!-- adsense end -->
+</head>
+<body>
+
+  <!-- Header Navbar -->
+  <header class="navigation shadow-sm">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark px-0 py-2">
+
+        <!-- Logo / Brand -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="images/logo.png" alt="Smart Finance 360 Logo">
+        </a> 
+
+        <!-- Toggler -->
+         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+        <!-- <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="navigation">
+  <ul class="navbar-nav mx-auto">
+    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+    <!-- <li class="nav-item"><a class="nav-link" href="new-post.html">+ New Post</a></li> -->
+    <li class="nav-item"><a class="nav-link" href="finance.html">Finance</a></li>
+    <li class="nav-item"><a class="nav-link" href="investment.html">Investment</a></li>
+    <li class="nav-item"><a class="nav-link" href="banking.html">Banking</a></li>
+    <li class="nav-item"><a class="nav-link" href="technology.html">Technology</a></li>
+    <li class="nav-item"><a class="nav-link" href="business.html">Business</a></li>
+    <li class="nav-item"><a class="nav-link" href="motivational.html">Motivational</a></li>
+    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+  </ul>
+
+          <!-- Search -->
+          <form class="search d-none d-md-block ml-lg-3">
+            <input type="search" placeholder="Search..." autocomplete="off">
+          </form>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Sticky Effect on Scroll -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const header = document.querySelector("header.navigation");
+      header.classList.toggle("sticky", window.scrollY > 50);
+    });
+  </script>
+<script>
+  // Get current page path
+ // Get current page path
+let currentPath = window.location.pathname.split("/").pop();
+
+// Default to index.html if empty (home page)
+if (currentPath === "") currentPath = "index.html";
+
+// Get all nav links
+const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+navLinks.forEach(link => {
+  // Get href of the link
+  const linkPath = link.getAttribute('href');
+
+  // Compare with currentPath
+  if (linkPath === currentPath) {
+    link.classList.add('active');
+  } else {
+    link.classList.remove('active');
+  }
+});
+
+</script>
+
+</body>
 
 <main>
   <section class="py-5">

@@ -1,4 +1,5 @@
 <footer class="footer bg-dark text-light mt-5">
+  
   <div class="container py-5">
     <div class="row">
       <div class="col-lg-10 mx-auto text-center">
@@ -32,9 +33,18 @@
 
       </div>
     </div>
+    
   </div>
 
-  <!-- Bottom strip -->
+  <div class="row">
+    <div class="col-6"></div>
+        <div class="col-6">
+          <iframe width="100" height="50" src="https://lookerstudio.google.com/embed/reporting/a566f5e4-f938-4cf0-8f12-ace57b2698f4/page/sG5ZF" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>  <!-- Bottom strip -->
+
+        </div>
+
+
+  </div>
   <div class="copyright bg-black text-center py-3">
     <small>
       Designed &amp; Developed By 
@@ -42,6 +52,31 @@
     </small>
   </div>
 </footer>
+
+
+<script>
+  async function fetchSiteStats() {
+    try {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbxIR9JKVLbJGhbzTCT9F2W_jyOLuJkQ22nb2ZnmD5lSJgIL5nprbp4OowsE4VIBC5po/exec?action=stats");
+      const data = await res.json();
+
+      if (!data.error) {
+        document.getElementById("active-users").textContent = data.activeUsers;
+        document.getElementById("total-users").textContent = data.totalUsers;
+      } else {
+        console.error("Stats API error:", data.error);
+      }
+    } catch (err) {
+      console.error("Failed to fetch stats:", err);
+    }
+  }
+
+  // Call immediately
+  fetchSiteStats();
+
+  // Optionally refresh every 30 seconds
+  setInterval(fetchSiteStats, 30000);
+</script>
 
 <!-- 🔹 Page View Tracking Script -->
 <script>

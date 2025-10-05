@@ -27,7 +27,7 @@
     }
 
     document.getElementById("category-title").innerText =
-      `Posts in "${selectedCat}"`;
+      `${selectedCat} Articles`;
 
     try {
       // 🔹 Fetch your sheet
@@ -69,6 +69,26 @@
       console.error("Fetch error:", err);
     }
   });
+  
+  document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const selectedCat = params.get("cat");
+
+  // 🔹 Set dynamic page title
+  if (selectedCat) {
+    document.title = `${selectedCat} Articles`;
+  } else {
+    document.title = "Category Posts";
+  }
+
+  // Update the page heading
+  document.getElementById("category-title").innerText =
+    selectedCat ? `${selectedCat} Articles` : "Category";
+
+  // ... rest of your fetch and render logic
+});
+
+
 </script>
   <div id="footer"></div>
 

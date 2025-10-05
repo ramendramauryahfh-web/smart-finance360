@@ -14,6 +14,21 @@
 </head>
 <body>
   <div id="header"></div>
+  <!-- Bootstrap Breadcrumb with Schema.org markup -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li class="breadcrumb-item" itemprop="itemListElement" itemscope
+        itemtype="https://schema.org/ListItem">
+      <a href="index.html" itemprop="item"><span itemprop="name">Home</span></a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope
+        itemtype="https://schema.org/ListItem">
+      <span itemprop="name">Banking</span>
+      <meta itemprop="position" content="2" />
+    </li>
+  </ol>
+</nav>
   <main>
     <section class="section">
       <div class="container">
@@ -22,9 +37,19 @@
             <h2 class="section-title">Banking Articles</h2>
           </div>
           <div class="col-lg-8 mb-5 mb-lg-0">
-            <div class="row" id="articles-container">
-              <h3>Loading posts...</h3>
-            </div>
+          <div class="row" id="articles-row">
+                <div id="article-loader" class="w-100">
+                  <div
+                    class="spinner-border text-warning"
+                    role="status"
+                    style="width: 3rem; height: 3rem"
+                  >
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+                <div id="articles-container" class="row"></div>
+                <!-- added class="row" -->
+              </div>
             <div class="text-center mt-4">
               <button id="load-more-btn" class="btn btn-primary d-none">Load More</button>
             </div>
@@ -38,5 +63,6 @@
   <script src="plugins/jquery/jquery.min.js"></script>
   <script src="plugins/bootstrap/bootstrap.min.js"></script>
   <script src="js/finance.js"></script>
+  
 </body>
 </html>

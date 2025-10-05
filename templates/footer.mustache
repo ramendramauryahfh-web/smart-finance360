@@ -1,0 +1,44 @@
+<footer class="footer bg-dark text-light mt-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-10 mx-auto text-center">
+
+        <!-- Brand -->
+        <a class="footer-brand d-inline-block mb-4 fs-3 fw-bold text-uppercase text-decoration-none" href="index.html">
+          Smart Finance 360
+        </a>
+
+        <!-- Nav links -->
+        <ul class="footer-nav p-0 d-flex flex-wrap justify-content-center mb-4 list-unstyled">
+          <li class="mx-3"><a class="nav-link text-light" href="about.html">About</a></li>
+          <li class="mx-3"><a class="nav-link text-light" href="new-post.html">New Post</a></li>
+          <li class="mx-3"><a class="nav-link text-light" href="privacy-policy.html">Privacy Policy</a></li>
+          <li class="mx-3"><a class="nav-link text-light" href="terms-conditions.html">Terms &amp; Conditions</a></li>
+          <li class="mx-3"><a class="nav-link text-light" href="404.html">404 Page</a></li>
+        </ul>
+
+        <!-- Social icons -->
+        <div class="social-links mb-3">
+          {{#SocialLinks}}
+          <a href="{{url}}" target="_blank" class="me-3 text-light"><i class="{{icon}} fs-4"></i></a>
+          {{/SocialLinks}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6"></div>
+    <div class="col-6">
+      <iframe width="100" height="50" src="{{ReportURL}}" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+    </div>
+  </div>
+
+  <div class="copyright bg-black text-center py-3">
+    <small>
+      Designed &amp; Developed By 
+      <a href="{{DesignerURL}}" class="text-decoration-none text-info fw-semibold">{{DesignerName}}</a>
+    </small>
+  </div>
+</footer>

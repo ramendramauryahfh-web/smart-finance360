@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   includeHTML();
 
   const container = document.getElementById("articles-container");
+  const loader = document.getElementById("article-loader");
   const loadMoreBtn = document.getElementById("load-more-btn");
   const API_URL = "https://script.google.com/macros/s/AKfycbysmMzT8ebpbbl2LNqOX_yXbtwz-BJbqcvnT6gdmCxRoiEBEAi2QSAbgb8cyIe-wgKI/exec";
  const metaCategory = document.querySelector('meta[name="category"]');
@@ -57,6 +58,9 @@ console.log(CATEGORY,"catgeory is here");
 
   // --- Render posts with pagination ---
   function renderPosts() {
+    // Remove loader spinner if present
+    loader?.remove();
+
     const slice = allPosts.slice(currentIndex, currentIndex + BATCH_SIZE);
     const html = slice.map(obj => {
       const title = obj.Title || "";
@@ -77,7 +81,7 @@ console.log(CATEGORY,"catgeory is here");
       return `
         <div class="col-md-6 mb-4">
           <article class="card article-card h-100">
-            <a class="post-link" href="article.html?slug=${encodeURIComponent(slug)}" data-post="${encodedPost}">
+            <a class="post-link" href="articles/${slug}.html" data-post="${encodedPost}">
               <div class="card-image">
                 <div class="post-info">
                   <span class="text-uppercase">${timeAgo(date)}</span>
@@ -89,11 +93,11 @@ console.log(CATEGORY,"catgeory is here");
             <div class="card-body px-0 pb-0">
               <ul class="post-meta mb-2">${catHtml}</ul>
               <h2>
-                <a class="post-title post-link" href="article.html?slug=${encodeURIComponent(slug)}" data-post="${encodedPost}">${title}</a>
+                <a class="post-title post-link" href="articles/${slug}.html" data-post="${encodedPost}">${title}</a>
               </h2>
               <p class="card-text">${excerpt}</p>
               <div class="content">
-                <a class="read-more-btn post-link" href="article.html?slug=${encodeURIComponent(slug)}" data-post="${encodedPost}">Read Full Article</a>
+                <a class="read-more-btn post-link" href="articles/${slug}.html" data-post="${encodedPost}">Read Full Article</a>
               </div>
             </div>
           </article>
@@ -101,8 +105,8 @@ console.log(CATEGORY,"catgeory is here");
       `;
     }).join("");
 
-    if (currentIndex === 0) container.innerHTML = html;
-    else container.insertAdjacentHTML("beforeend", html);
+    // Append posts as children of #articles-container
+    container.insertAdjacentHTML("beforeend", html);
 
     currentIndex += BATCH_SIZE;
 

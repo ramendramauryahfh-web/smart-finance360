@@ -1,12 +1,24 @@
 [build]
-publish = "theme"
+publish = "public"
 command = "npm run build"
 
 [[headers]]
-for = "/*" # This defines which paths this specific [[headers]] block will cover.
+for = "/*"
+  [headers.values]
+  X-Frame-Options = "DENY"
+  X-XSS-Protection = "1; mode=block"
+  Referrer-Policy = "same-origin"
+  Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
-[headers.values]
-X-Frame-Options = "DENY"
-X-XSS-Protection = "1; mode=block"
-Referrer-Policy = "same-origin"
-Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+# --- Rewrite rule for clean article URLs ---
+[[redirects]]
+  from = "/:slug.html"
+  to = "/articles/:slug.html"
+  status = 200
+
+# --- Optional: handle missing pages with 404.html ---
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+

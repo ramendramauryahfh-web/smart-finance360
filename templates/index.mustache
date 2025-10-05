@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Smart Finance 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="author" content="Themefisher">
+
+  <meta name="description" content="{{MetaDescription}}">
+  <meta name="keywords" content="{{MetaKeywords}}">
+  <link rel="canonical" href="{{CanonicalURL}}">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="{{MetaTitle}}">
+  <meta property="og:description" content="{{MetaDescription}}">
+  <meta property="og:image" content="{{OGImage}}">
+  <meta property="og:url" content="{{CanonicalURL}}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+  <!-- Google Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  {{> header}}
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="row">
+
+          <!-- Main Content -->
+          <div class="col-lg-8 mb-5 mb-lg-0">
+            <div class="row">
+              {{#articles}}
+              <div class="col-md-6 mb-4">
+                <article class="card">
+                  <img src="{{ImageURL}}" class="card-img-top" alt="{{Title}}">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="article.html?slug={{Slug}}">{{Title}}</a>
+                    </h5>
+                    <p class="card-text">{{Excerpt}}</p>
+                    <div class="text-muted small">
+                      {{DateTime}} · {{ReadTime}} min read · By {{Author}}
+                    </div>
+                    <a href="article.html?slug={{Slug}}" class="btn btn-sm btn-outline-primary mt-2">Read More</a>
+                  </div>
+                </article>
+              </div>
+              {{/articles}}
+              {{^articles}}
+              <p>No articles found.</p>
+              {{/articles}}
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="col-lg-4">
+            {{> sidebar}}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  {{> footer}}
+
+  <!-- JS Plugins -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
