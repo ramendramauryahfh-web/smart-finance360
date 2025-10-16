@@ -107,14 +107,14 @@ async function fetchArticles() {
 
     // --- Generate sitemap.xml ---
     const pages = [
-      { loc: 'https://smartfinance360.com/index.html', changefreq: 'daily', priority: 1.0 },
-      { loc: 'https://smartfinance360.com/finance.html', changefreq: 'weekly', priority: 0.8 },
-      { loc: 'https://smartfinance360.com/investment.html', changefreq: 'weekly', priority: 0.8 },
-      { loc: 'https://smartfinance360.com/banking.html', changefreq: 'weekly', priority: 0.8 },
-      { loc: 'https://smartfinance360.com/technology.html', changefreq: 'weekly', priority: 0.8 },
-      { loc: 'https://smartfinance360.com/business.html', changefreq: 'weekly', priority: 0.8 },
-      { loc: 'https://smartfinance360.com/motivational.html', changefreq: 'weekly', priority: 0.8 },
-      { loc: 'https://smartfinance360.com/contact.html', changefreq: 'monthly', priority: 0.6 },
+      { loc: 'https://smartfinance360.com/index.html', changefreq: 'always', priority: 1.0 },
+      { loc: 'https://smartfinance360.com/finance.html', changefreq: 'hourly', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/investment.html', changefreq: 'hourly', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/banking.html', changefreq: 'hourly', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/technology.html', changefreq: 'hourly', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/business.html', changefreq: 'hourly', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/motivational.html', changefreq: 'hourly', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/contact.html', changefreq: 'hourly', priority: 0.6 },
     ];
 
     articles.forEach(article => {

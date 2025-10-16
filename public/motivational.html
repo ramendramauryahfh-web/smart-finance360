@@ -1,63 +1,277 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="category" content="Motivational">
-  <title>Thought of the Day | Smart Finance 360</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-   <!-- favicon -->
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <title>Motivational Thoughts | Smart Finance 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta name="description" content="Get daily motivational thoughts and inspirational quotes to boost your confidence, positivity, and success mindset. Read and share powerful motivation on Smart Finance 360.">
+  <meta name="keywords" content="motivational thoughts, daily motivation, positive quotes, inspiration, success mindset, Smart Finance 360">
+  <meta name="author" content="Smart Finance 360">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartfinance360.com/motivational.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Motivational Thoughts | Daily Inspiration for Success | Smart Finance 360">
+  <meta property="og:description" content="Read and share motivational quotes that inspire positivity and growth. Discover daily inspiration on Smart Finance 360.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://smartfinance360.com/motivational.html">
+  <meta property="og:site_name" content="Smart Finance 360">
+  <meta property="og:image" content="https://smartfinance360.com/images/motivation-banner.jpg">
+  <meta property="og:image:alt" content="Motivational Thoughts - Smart Finance 360">
+
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ✅ Google AdSense script (only once in head) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9846205135944521"
+     crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      font-family: 'Poppins', sans-serif;
+      padding-top: 100px;
+      padding-bottom: 60px;
+    }
+
+    h2 {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    #thoughtsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .thought-card {
+      border: none;
+      border-radius: 18px;
+      color: #0a0606;
+      padding: 25px 20px;
+      flex: 1 1 300px;
+      max-width: 320px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+    }
+
+    .thought-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .highlighted {
+      outline: 3px solid #ffcd00;
+      background-color: #fffbe6 !important;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+    }
+
+    .card-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .brand-tag {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .card-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn-copy, .btn-share {
+      border: none;
+      border-radius: 30px;
+      padding: 7px 20px;
+      font-size: 0.9rem;
+      color: #0e0c0c;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-copy:hover, .btn-share:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .ad-card {
+      flex: 1 1 300px;
+      max-width: 320px;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .ad-card ins {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .thought-card, .ad-card {
+        flex: 1 1 90%;
+        max-width: 90%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <div id="header"></div>
-  <!-- Bootstrap Breadcrumb with Schema.org markup -->
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-    <li class="breadcrumb-item" itemprop="itemListElement" itemscope
-        itemtype="https://schema.org/ListItem">
-      <a href="index.html" itemprop="item"><span itemprop="name">Home</span></a>
-      <meta itemprop="position" content="1" />
-    </li>
-    <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope
-        itemtype="https://schema.org/ListItem">
-      <span itemprop="name">Motivational</span>
-      <meta itemprop="position" content="2" />
-    </li>
-  </ol>
-</nav>
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="row no-gutters-lg">
-          <div class="col-12">
-            <h2 class="section-title">Though Of The Day</h2>
-          </div>
-          <div class="col-lg-8 mb-5 mb-lg-0">
-             <div class="row" id="articles-row">
-              <div id="article-loader" class="w-100">
-                <div class="spinner-border text-warning" role="status" style="width:3rem;height:3rem;">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
-              <div id="articles-container" class="w-100"></div>
+  <div class="container">
+    <h2>✨ Motivational Thoughts ✨</h2>
+    <div id="thoughtsContainer"></div>
+  </div>
+
+  <script>
+  const API_URL = "https://opensheet.elk.sh/1TxdvMNgP6bN-566gtVo10qkI595Q76T9_nt8-G5SwBs/Sheet3";
+  let thoughts = [];
+
+  const gradients = [
+    "linear-gradient(135deg, #90caf9, #64b5f6)",
+    "linear-gradient(135deg, #ffab91, #ffccbc)",
+    "linear-gradient(135deg, #a5d6a7, #81c784)",
+    "linear-gradient(135deg, #ce93d8, #ba68c8)",
+    "linear-gradient(135deg, #80deea, #4dd0e1)",
+    "linear-gradient(135deg, #ffd54f, #ffb74d)",
+    "linear-gradient(135deg, #f48fb1, #f06292)",
+    "linear-gradient(135deg, #b39ddb, #9575cd)",
+    "linear-gradient(135deg, #80cbc4, #4db6ac)",
+    "linear-gradient(135deg, #f8bbd0, #f48fb1)"
+  ];
+
+  async function loadThoughts() {
+    const container = document.getElementById("thoughtsContainer");
+    container.innerHTML = "<p>Loading...</p>";
+
+    try {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      thoughts = data.map(row =>
+        (row.Thought || row.thought || row.Quote || row.Message || row.Text || "").trim()
+      ).filter(Boolean);
+
+      if (thoughts.length === 0) {
+        container.innerHTML = "<p style='color:red'>❌ No valid 'Thought' data found in the sheet.</p>";
+        return;
+      }
+
+      let html = "";
+      thoughts.forEach((t, i) => {
+        const bg = gradients[i % gradients.length];
+        html += `
+          <div id="thought-${i+1}" class="thought-card" style="background:${bg}">
+            <div>
+              <div class="card-text">"${t}"</div>
+              <div class="brand-tag">Ramendra Maurya</div>
             </div>
-            <div class="text-center mt-4">
-              <button id="load-more-btn" class="btn btn-primary d-none">Load More</button>
+            <div class="card-buttons">
+              <button class="btn-copy" onclick="copyThought(${i})">📋 Copy</button>
+              <button class="btn-share" onclick="shareThought(${i})">🔗 Share</button>
             </div>
           </div>
-          <div class="col-lg-4" id="sidebar"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <div id="footer"></div>
-  
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <script src="js/finance.js"></script>
+        `;
+
+        // 📢 AdSense after every 3 thoughts
+        if ((i + 1) % 3 === 0) {
+          html += `
+            <div class="ad-card">
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-9846205135944521"
+                  data-ad-slot="7590825457"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"></ins>
+            </div>
+          `;
+        }
+      });
+
+      container.innerHTML = html;
+
+      // ✅ Initialize all AdSense ads dynamically
+      setTimeout(() => {
+        const ads = document.querySelectorAll(".adsbygoogle");
+        ads.forEach(ad => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          } catch (e) {
+            console.error("AdSense error:", e);
+          }
+        });
+      }, 800);
+
+      highlightThoughtFromURL();
+
+    } catch (error) {
+      console.error("❌ Fetch or render error:", error);
+      container.innerHTML = "<p style='color:red'>❌ Failed to load thoughts from Google Sheet.</p>";
+    }
+  }
+
+  function copyThought(index) {
+    const thoughtOfTheDay = `*Thought of the Day* \r\n`;
+    const thought = thoughts[index];
+    const shareUrl = `${window.location.origin}/motivational.html?thought=${index + 1}`;
+    const shareText = `${thoughtOfTheDay}\r\n"${thought}" - via\n\nRead more: ${shareUrl}`;
+
+    navigator.clipboard.writeText(shareText)
+      .then(() => alert("✅ Thought copied to clipboard!"))
+      .catch(() => alert("❌ Failed to copy text."));
+  }
+
+  function shareThought(index) {
+    const thoughtOfTheDay = `*Thought of the Day* \r\n`;
+    const thought = thoughts[index];
+    const shareUrl = `${window.location.origin}/motivational.html?thought=${index + 1}`;
+    const shareText = `${thoughtOfTheDay}\r\n"${thought}" - via\n\nRead more: ${shareUrl}`;
+
+    if (navigator.share) {
+      navigator.share({ title: "Motivational Thought", text: shareText });
+    } else {
+      window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
+    }
+  }
+
+  function highlightThoughtFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const thoughtIndex = parseInt(params.get("thought"));
+    if (thoughtIndex && thoughtIndex > 0 && thoughtIndex <= thoughts.length) {
+      const target = document.getElementById(`thought-${thoughtIndex}`);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+        target.classList.add("highlighted");
+        setTimeout(() => target.classList.remove("highlighted"), 4000);
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadThoughts);
+  </script>
+
 </body>
 </html>
