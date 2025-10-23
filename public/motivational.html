@@ -142,6 +142,8 @@
 </head>
 
 <body>
+  <div id="header"></div>
+
   <div class="container">
     <h2>✨ Motivational Thoughts ✨</h2>
     <div id="thoughtsContainer"></div>
@@ -195,8 +197,6 @@
             </div>
           </div>
         `;
-
-        // 📢 AdSense after every 3 thoughts
         if ((i + 1) % 3 === 0) {
           html += `
             <div class="ad-card">
@@ -212,11 +212,9 @@
       });
 
       container.innerHTML = html;
-
-      // ✅ Initialize all AdSense ads dynamically
       setTimeout(() => {
         const ads = document.querySelectorAll(".adsbygoogle");
-        ads.forEach(ad => {
+        ads.forEach(() => {
           try {
             (adsbygoogle = window.adsbygoogle || []).push({});
           } catch (e) {
@@ -226,7 +224,6 @@
       }, 800);
 
       highlightThoughtFromURL();
-
     } catch (error) {
       console.error("❌ Fetch or render error:", error);
       container.innerHTML = "<p style='color:red'>❌ Failed to load thoughts from Google Sheet.</p>";
@@ -234,10 +231,9 @@
   }
 
   function copyThought(index) {
-    const thoughtOfTheDay = `*Thought of the Day* \r\n`;
     const thought = thoughts[index];
     const shareUrl = `${window.location.origin}/motivational.html?thought=${index + 1}`;
-    const shareText = `${thoughtOfTheDay}\r\n"${thought}" - via\n\nRead more: ${shareUrl}`;
+    const shareText = `"${thought}"\n\nRead more: ${shareUrl}`;
 
     navigator.clipboard.writeText(shareText)
       .then(() => alert("✅ Thought copied to clipboard!"))
@@ -245,10 +241,9 @@
   }
 
   function shareThought(index) {
-    const thoughtOfTheDay = `*Thought of the Day* \r\n`;
     const thought = thoughts[index];
     const shareUrl = `${window.location.origin}/motivational.html?thought=${index + 1}`;
-    const shareText = `${thoughtOfTheDay}\r\n"${thought}" - via\n\nRead more: ${shareUrl}`;
+    const shareText = `"${thought}"\n\nRead more: ${shareUrl}`;
 
     if (navigator.share) {
       navigator.share({ title: "Motivational Thought", text: shareText });
@@ -273,5 +268,9 @@
   document.addEventListener("DOMContentLoaded", loadThoughts);
   </script>
 
+  <div id="footer"></div>
+
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
 </body>
 </html>

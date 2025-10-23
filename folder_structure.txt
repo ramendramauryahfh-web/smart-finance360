@@ -7,7 +7,7 @@ E:\SMART-FINANCE360\PUBLIC
 |   Ads.txt
 |   article.html
 |   articles.json
-|   banking.html
+|   sports.html
 |   business.html
 |   category.html
 |   comments.json

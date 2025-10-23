@@ -16,7 +16,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://smartfinance360.com/banking.html</loc>
+    <loc>https://smartfinance360.com/sports.html</loc>
     <changefreq>hourly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -222,6 +222,26 @@
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/motilal-oswal-midcap-fund-sip.html</loc>
+    <changefreq>always</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://smartfinance360.com/articles/gold-alternatives-for-investors-2025.html</loc>
+    <changefreq>always</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://smartfinance360.com/articles/understanding-chatgpt-ai-conversation-model.html</loc>
+    <changefreq>always</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://smartfinance360.com/articles/afghanistan-vs-zimbabwe-cricket-rivalry.html</loc>
+    <changefreq>always</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://smartfinance360.com/articles/aws-outage-vs-afghanistan-internet-blackout.html</loc>
     <changefreq>always</changefreq>
     <priority>1</priority>
   </url>
