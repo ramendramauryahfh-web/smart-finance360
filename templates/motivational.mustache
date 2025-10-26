@@ -1,0 +1,277 @@
+<!-- Mustache template: motivational.mustache -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{metaDescription}}">
+  <meta name="keywords" content="{{metaKeywords}}">
+  <meta name="author" content="{{metaAuthor}}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{canonical}}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ogTitle}}">
+  <meta property="og:description" content="{{ogDescription}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ogUrl}}">
+  <meta property="og:site_name" content="{{ogSiteName}}">
+  <meta property="og:image" content="{{ogImage}}">
+  <meta property="og:image:alt" content="{{ogImageAlt}}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ogTitle}}">
+  <meta name="twitter:description" content="{{ogDescription}}">
+  <meta name="twitter:image" content="{{ogImage}}">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{favicon}}" type="image/x-icon">
+
+  <!-- Styles & Fonts -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{adsClient}}" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      font-family: 'Poppins', sans-serif;
+      padding-top: 100px;
+      padding-bottom: 80px;
+    }
+    h2 {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    #thoughtsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+    .thought-card {
+      border: none;
+      border-radius: 18px;
+      color: #0a0606;
+      padding: 25px 20px;
+      flex: 1 1 300px;
+      max-width: 320px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transition: transform .25s ease, box-shadow .3s ease;
+      background: #fff;
+    }
+    .thought-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .highlighted {
+      outline: 3px solid #ffcd00;
+      background-color: #fffbe6 !important;
+      box-shadow: 0 0 25px rgba(255,215,0,0.7);
+    }
+    .card-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.6;
+      text-align: center;
+    }
+    .brand-tag {
+      margin-top: 10px;
+      font-size: .9rem;
+      font-weight: 500;
+      text-align: center;
+      color: rgba(0,0,0,0.6);
+    }
+    .card-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .btn-copy, .btn-share {
+      border: none;
+      border-radius: 30px;
+      padding: 7px 20px;
+      font-size: .9rem;
+      color: #0e0c0c;
+      cursor: pointer;
+      transition: all .3s ease;
+      background: rgba(255,255,255,0.25);
+    }
+    .btn-copy:hover, .btn-share:hover {
+      background: rgba(255,255,255,0.4);
+      transform: translateY(-2px);
+    }
+    .ad-card {
+      flex: 1 1 300px;
+      max-width: 320px;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .ad-card ins {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+    .pagination-container button {
+      border-radius: 25px;
+      padding: 6px 14px;
+      font-weight: 500;
+      transition: all .3s ease;
+    }
+    .pagination-container button:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+    @media (max-width:768px) {
+      .thought-card, .ad-card {
+        flex: 1 1 90%;
+        max-width: 90%;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Motivational Thoughts",
+    "description": "Daily motivational thoughts and inspirational quotes to uplift your day.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Smart Finance 360",
+      "url": "https://smartfinance360.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://smartfinance360.com/images/logo.png"
+      }
+    },
+    "url": "https://smartfinance360.com/motivational.html"
+  }
+  </script>
+</head>
+
+<body>
+  <div id="header">{{> header}}</div>
+
+  <div class="container">
+    <h2>✨ {{pageHeading}} ✨</h2>
+
+    <div id="thoughtsContainer">
+      {{#thought}}
+        <div id="thought-{{id}}" class="thought-card" style="background: {{bg}}">
+          <div>
+            <div class="card-text">"{{text}}"</div>
+            <div class="brand-tag">- {{author}}</div>
+          </div>
+          <div class="card-buttons">
+            <button class="btn-copy" data-id="{{id}}" onclick="copyThought(event)">📋 Copy</button>
+            <button class="btn-share" data-id="{{id}}" onclick="shareThought(event)">🔗 Share</button>
+          </div>
+        </div>
+
+        {{#showAd}}
+        <div class="ad-card">
+          <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="{{adsClient}}"
+              data-ad-slot="{{adsSlot}}"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+        </div>
+        {{/showAd}}
+      {{/thought}}
+    </div>
+
+    {{#hasPagination}}
+    <nav class="pagination-container text-center mt-4" aria-label="Page navigation">
+      {{#showPrev}}
+      <a class="btn btn-light mx-1" href="{{prevUrl}}">⬅ Prev</a>
+      {{/showPrev}}
+
+      {{#pages}}
+        <a href="{{url}}" class="btn mx-1 {{#isCurrent}}btn-primary{{/isCurrent}}{{^isCurrent}}btn-outline-primary{{/isCurrent}}">
+          {{number}}
+        </a>
+      {{/pages}}
+
+      {{#showNext}}
+      <a class="btn btn-light mx-1" href="{{nextUrl}}">Next ➡</a>
+      {{/showNext}}
+    </nav>
+    {{/hasPagination}}
+  </div>
+
+  <script>
+    (function() {
+      window.THOUGHTS_MAP = window.THOUGHTS_MAP || {};
+
+      window.copyThought = function(e) {
+        var id = e.currentTarget.getAttribute('data-id');
+        var t = (window.THOUGHTS_MAP && window.THOUGHTS_MAP[id]) ? window.THOUGHTS_MAP[id].text : document.getElementById('thought-' + id)?.innerText;
+        var shareUrl = (window.location.origin || '') + '{{pageBasePath}}?thought=' + id;
+        var shareText = '"' + (t || '') + '"\\n\\nRead more: ' + shareUrl;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(shareText).then(() => alert('✅ Thought copied!'));
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = shareText;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          alert('✅ Thought copied!');
+        }
+      };
+
+      window.shareThought = function(e) {
+        var id = e.currentTarget.getAttribute('data-id');
+        var t = (window.THOUGHTS_MAP && window.THOUGHTS_MAP[id]) ? window.THOUGHTS_MAP[id].text : document.getElementById('thought-' + id)?.innerText;
+        var shareUrl = (window.location.origin || '') + '{{pageBasePath}}?thought=' + id;
+        var shareText = '"' + (t || '') + '"\\n\\nRead more: ' + shareUrl;
+        if (navigator.share) {
+          navigator.share({ title: '{{shareTitle}}', text: shareText });
+        } else {
+          window.open('https://wa.me/?text=' + encodeURIComponent(shareText), '_blank');
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var thoughtIndex = parseInt(params.get('thought'));
+          if (thoughtIndex) {
+            var el = document.getElementById('thought-' + thoughtIndex);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              el.classList.add('highlighted');
+              setTimeout(() => el.classList.remove('highlighted'), 4000);
+            }
+          }
+        } catch (e) {}
+        setTimeout(() => { try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {} }, 600);
+      });
+    })();
+  </script>
+
+  <div id="footer">{{> footer}}</div>
+
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

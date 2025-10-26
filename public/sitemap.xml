@@ -1,248 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://smartfinance360.com/index.html</loc>
-    <changefreq>always</changefreq>
+    <changefreq>hourly</changefreq>
     <priority>1</priority>
-  </url>
-  <url>
-    <loc>https://smartfinance360.com/finance.html</loc>
-    <changefreq>hourly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://smartfinance360.com/investment.html</loc>
-    <changefreq>hourly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://smartfinance360.com/sports.html</loc>
-    <changefreq>hourly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://smartfinance360.com/technology.html</loc>
-    <changefreq>hourly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://smartfinance360.com/business.html</loc>
-    <changefreq>hourly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/motivational.html</loc>
-    <changefreq>hourly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://smartfinance360.com/contact.html</loc>
-    <changefreq>hourly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/best-credit-card-usa.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/rupay-and-indias-finance-story-why-rupay-matters-now.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/credit-card-lounge-access-india.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/best-ways-to-make-money-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/freelancing-guide-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/blogging-guide-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/youtube-channel-guide-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/blogging-income-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/india-fintech-startups-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/digital-gold-platforms-india-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/smart-sip-strategies-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/neo-banks-millennials-india-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/ai-personal-finance-apps-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/micro-entrepreneur-rural-india-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/esg-investing-india-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/robo-advisors-india-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/blockchain-real-estate-india-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/digital-kyc-inclusion-india-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/ai-video-generators-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/ai-agents-assistants-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/ai-for-teachers-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/immersive-experiences-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/digital-product-passport-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/ai-in-finance-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/bnpl-adoption-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/crypto-regulation-adoption-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/quantum-computing-breakthroughs-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/top-business-trends-usa-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/top-technology-trends-usa-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>https://smartfinance360.com/articles/maurya.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/zoho-app-guide.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/zoho-app-guide-hindi.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>https://smartfinance360.com/articles/thought.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/youtube-start-grow-beginne.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/how-to-build-backlinks.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/google-gemini-nano-banana-ai-images-whatsapp.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/motilal-oswal-midcap-fund-sip.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/gold-alternatives-for-investors-2025.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/understanding-chatgpt-ai-conversation-model.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/afghanistan-vs-zimbabwe-cricket-rivalry.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://smartfinance360.com/articles/aws-outage-vs-afghanistan-internet-blackout.html</loc>
-    <changefreq>always</changefreq>
-    <priority>1</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://smartfinance360.com/articles/ultimate-guide-to-bitcoin-2025.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

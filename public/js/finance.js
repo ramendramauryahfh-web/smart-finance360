@@ -57,62 +57,76 @@ console.log(CATEGORY,"catgeory is here");
   }
 
   // --- Render posts with pagination ---
-  function renderPosts() {
-    // Remove loader spinner if present
-    loader?.remove();
+async function renderPosts() {
+  loader?.remove();
 
-    const slice = allPosts.slice(currentIndex, currentIndex + BATCH_SIZE);
-    const html = slice.map(obj => {
-      const title = obj.Title || "";
-      const slug = obj.Slug || "#";
-      const date = obj.DateTime || obj.Date || "";
-      const readTime = obj.ReadTime || "";
-      const categories = obj.Category || "";
-      const excerpt = obj.Excerpt || "";
-      const image = obj.ImageURL && obj.ImageURL.trim() !== "" ? obj.ImageURL.trim() : "images/default.jpg";
+  const slice = allPosts.slice(currentIndex, currentIndex + BATCH_SIZE);
 
-      const catHtml = categories ? categories.split(",").map(c => {
-        const t = c.trim();
-        return `<li><a href="category.html?cat=${encodeURIComponent(t)}">${t}</a></li>`;
-      }).join(" ") : "";
+  // Build HTML dynamically (but check if file exists)
+  for (const obj of slice) {
+    const title = obj.Title || "";
+    const slug = obj.Slug || "#";
+    const date = obj.DateTime || obj.Date || "";
+    const readTime = obj.ReadTime || "";
+    const categories = obj.Category || "";
+    const excerpt = obj.Excerpt || "";
+    const image = obj.ImageURL && obj.ImageURL.trim() !== "" ? obj.ImageURL.trim() : "images/default.jpg";
+    const encodedPost = encodeURIComponent(JSON.stringify(obj));
 
-      const encodedPost = encodeURIComponent(JSON.stringify(obj));
+    const catHtml = categories
+      ? categories.split(",").map(c => {
+          const t = c.trim();
+          return `<li><a href="category.html?cat=${encodeURIComponent(t)}">${t}</a></li>`;
+        }).join(" ")
+      : "";
 
-      return `
-        <div class="col-md-6 mb-4">
-          <article class="card article-card h-100">
-            <a class="post-link" href="articles/${slug}.html" data-post="${encodedPost}">
-              <div class="card-image">
-                <div class="post-info">
-                  <span class="text-uppercase">${timeAgo(date)}</span>
-                  <span>${readTime} Mins Read</span>
-                </div>
-                <img src="${image}" alt="Post Thumbnail" class="w-100">
+    const articleUrl = `articles/${slug}.html`;
+    const fallbackUrl = `article.html?slug=${encodeURIComponent(slug)}`;
+
+    // ✅ Check if article file exists
+    let finalUrl = fallbackUrl;
+    try {
+      const res = await fetch(articleUrl, { method: "HEAD" });
+      if (res.ok) finalUrl = articleUrl;
+    } catch (err) {
+      finalUrl = fallbackUrl;
+    }
+
+    const html = `
+      <div class="col-md-6 mb-4">
+        <article class="card article-card h-100">
+          <a class="post-link" href="${finalUrl}" data-post="${encodedPost}">
+            <div class="card-image">
+              <div class="post-info">
+                <span class="text-uppercase">${timeAgo(date)}</span>
+                <span>${readTime} Mins Read</span>
               </div>
-            </a>
-            <div class="card-body px-0 pb-0">
-              <ul class="post-meta mb-2">${catHtml}</ul>
-              <h2>
-                <a class="post-title post-link" href="articles/${slug}.html" data-post="${encodedPost}">${title}</a>
-              </h2>
-              <p class="card-text">${excerpt}</p>
-              <div class="content">
-                <a class="read-more-btn post-link" href="articles/${slug}.html" data-post="${encodedPost}">Read Full Article</a>
-              </div>
+              <img src="${image}" alt="Post Thumbnail" class="w-100">
             </div>
-          </article>
-        </div>
-      `;
-    }).join("");
+          </a>
+          <div class="card-body px-0 pb-0">
+            <ul class="post-meta mb-2">${catHtml}</ul>
+            <h2>
+              <a class="post-title post-link" href="${finalUrl}" data-post="${encodedPost}">${title}</a>
+            </h2>
+            <p class="card-text">${excerpt}</p>
+            <div class="content">
+              <a class="read-more-btn post-link" href="${finalUrl}" data-post="${encodedPost}">Read Full Article</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    `;
 
-    // Append posts as children of #articles-container
     container.insertAdjacentHTML("beforeend", html);
-
-    currentIndex += BATCH_SIZE;
-
-    if (currentIndex >= allPosts.length) loadMoreBtn.classList.add("d-none");
-    else loadMoreBtn.classList.remove("d-none");
   }
+
+  currentIndex += BATCH_SIZE;
+
+  if (currentIndex >= allPosts.length) loadMoreBtn.classList.add("d-none");
+  else loadMoreBtn.classList.remove("d-none");
+}
+
 
   // --- Load more ---
   loadMoreBtn.addEventListener("click", renderPosts);
