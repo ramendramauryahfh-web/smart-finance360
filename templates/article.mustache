@@ -1,33 +1,195 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{{MetaTitle}}</title>
+  <title>{{Title}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="author" content="{{Author}}">
+  <meta name="robots" content="index, follow">
+
+  <!-- Primary SEO -->
   <meta name="description" content="{{MetaDescription}}">
-  <meta name="keywords" content="{{Keywords}}">
+  <meta name="keywords" content="{{MetaKeywords}}">
   <link rel="canonical" href="{{CanonicalURL}}">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{{MetaTitle}}">
+  <meta property="og:title" content="{{Title}}">
   <meta property="og:description" content="{{MetaDescription}}">
-  <meta property="og:image" content="{{ImageURL}}">
+  <meta property="og:image" content="{{OGImage}}">
   <meta property="og:url" content="{{CanonicalURL}}">
   <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Smart Finance 360">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{Title}}">
+  <meta name="twitter:description" content="{{MetaDescription}}">
+  <meta name="twitter:image" content="{{OGImage}}">
+  <meta name="twitter:site" content="@SmartFinance360">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{Title}}",
+    "description": "{{MetaDescription}}",
+    "image": "{{OGImage}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{Author}}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Smart Finance 360",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://smartfinance360.com/images/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{CanonicalURL}}"
+    },
+    "datePublished": "{{DatePublished}}",
+    "dateModified": "{{DateModified}}",
+    "url": "{{CanonicalURL}}"
+  }
+  </script>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://smartfinance360.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Articles",
+        "item": "https://smartfinance360.com/articles/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{Title}}",
+        "item": "{{CanonicalURL}}"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Smart Finance 360",
+    "url": "https://smartfinance360.com/",
+    "logo": "https://smartfinance360.com/images/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/smartfinance360",
+      "https://twitter.com/smartfinance360",
+      "https://www.linkedin.com/company/smartfinance360"
+    ]
+  }
+  </script>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
-  <!-- Google Fonts & Icons -->
+  <!-- Fonts & CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <!-- Google Analytics -->
+  <!-- Bootstrap CSS for header -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Inline CSS from header -->
+  <style>
+    header.navigation {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(26, 31, 54, 0.95);
+      transition: all 0.3s ease;
+      z-index: 1050;
+      height: 70px;
+      padding: 0;
+    }
+
+    header.navigation.sticky {
+      background: rgba(26, 31, 54, 1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      height: 60px;
+    }
+
+    header.navigation.sticky .navbar-brand img {
+      height: 40px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #f8f9fa;
+      font-weight: 500;
+      padding: 10px 18px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #ffcd00;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: #ffcd00;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      width: 60%;
+    }
+
+    .search input {
+      border-radius: 15px;
+      border: none;
+      padding: 4px 12px;
+      height: 30px;
+      width: 150px;
+      background-color: #fff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand img {
+      height: 55px;
+      filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+      transition: all 0.3s ease;
+      background-color: #fff;
+    }
+
+    body { padding-top: 80px; }
+  </style>
+
+  <!-- Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-276VFWZL9H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -35,122 +197,151 @@
     gtag('js', new Date());
     gtag('config', 'G-276VFWZL9H');
   </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9846205135944521"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-5h+cx+1k-lo+ut"
-     data-ad-client="ca-pub-9846205135944521"
-     data-ad-slot="9741210600"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9846205135944521" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <!-- Header Partial -->
-  {{> header}}
 
-  <!-- Breadcrumb -->
-  <div class="mt-3">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="index.html" itemprop="item"><span itemprop="name">Home</span></a>
-          <meta itemprop="position" content="1" />
-        </li>
-        {{#CategoryList}}
-        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="category.html?category={{.}}" itemprop="item"><span itemprop="name">{{.}}</span></a>
-          <meta itemprop="position" content="2" />
-        </li>
-        {{/CategoryList}}
-        <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name">{{Title}}</span>
-          <meta itemprop="position" content="{{BreadcrumbPosition}}" />
-        </li>
-      </ol>
+<!-- MERGED HEADER START -->
+<header class="navigation shadow-sm">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark px-0 py-2">
+
+      <a class="navbar-brand d-flex align-items-center" href="{{root}}index.html">
+        <img src="{{logoURL}}" alt="{{siteName}} Logo">
+      </a>
+
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link {{#isActiveHome}}active{{/isActiveHome}}" href="{{root}}index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link {{#isActiveFinance}}active{{/isActiveFinance}}" href="{{root}}finance.html">Finance</a></li>
+          <li class="nav-item"><a class="nav-link {{#isActiveInvestment}}active{{/isActiveInvestment}}" href="{{root}}investment.html">Investment</a></li>
+          <li class="nav-item"><a class="nav-link {{#isActiveSports}}active{{/isActiveSports}}" href="{{root}}sports.html">Sports</a></li>
+          <li class="nav-item"><a class="nav-link {{#isActiveTechnology}}active{{/isActiveTechnology}}" href="{{root}}technology.html">Technology</a></li>
+          <li class="nav-item"><a class="nav-link {{#isActiveBusiness}}active{{/isActiveBusiness}}" href="{{root}}business.html">Business</a></li>
+          <li class="nav-item"><a class="nav-link {{#isActiveMotivational}}active{{/isActiveMotivational}}" href="{{root}}motivational.html">Motivational</a></li>
+          <li class="nav-item"><a class="nav-link {{#isActiveContact}}active{{/isActiveContact}}" href="{{root}}contact.html">Contact</a></li>
+        </ul>
+
+        <form class="search d-none d-md-block ml-lg-3">
+          <input type="search" placeholder="Search..." autocomplete="off">
+        </form>
+      </div>
+
     </nav>
   </div>
+</header>
+<!-- MERGED HEADER END -->
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <!-- Article -->
-          <div class="col-lg-8 mb-5 mb-lg-0">
-            <article class="text-center py-5">
-              <header class="mb-4">
-                <h1 class="mb-2">{{Title}}</h1>
-                <div class="text-muted small">
-                  <span>{{DateTime}}</span> · <span>{{ReadTime}} min read</span> · <span>By {{Author}}</span> · <span>{{Views}} Views</span>
-                </div>
-                <ul class="post-meta mt-2">
-                  {{#CategoryList}}
-                    <li style="display:inline; margin-right:5px;">
-                      <a href="category.html?category={{.}}">{{.}}</a>
-                    </li>
-                  {{/CategoryList}}
-                </ul>
-              </header>
-
-              <!-- Social Share Buttons -->
-              <div class="social-share mt-4">
-                <h6>Share this article:</h6>
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{CanonicalURL}}" target="_blank" class="social-icon fb"><i class="fab fa-facebook-f fa-2x"></i></a>
-                <a href="https://twitter.com/intent/tweet?text={{Title}}&url={{CanonicalURL}}" target="_blank" class="social-icon tw"><i class="fab fa-twitter fa-2x"></i></a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{CanonicalURL}}" target="_blank" class="social-icon li"><i class="fab fa-linkedin-in fa-2x"></i></a>
-                <a href="https://api.whatsapp.com/send?text={{Title}} {{CanonicalURL}}" target="_blank" class="social-icon wa"><i class="fab fa-whatsapp fa-2x"></i></a>
-              </div>
-
-              <figure class="mb-4">
-                <img src="{{ImageURL}}" alt="{{Title}}" class="w-100 rounded">
-              </figure>
-
-              <section class="article-content">
-                {{{Content}}}
-              </section>
-
-              <!-- Keywords -->
-    {{#KeywordsList.length}}
-<div class="article-keywords mt-2">
-  <strong>Keywords:</strong>
-  {{#KeywordsList}}
-    <a href="search.html?keyword={{.}}" class="badge bg-light text-dark" style="margin-right:5px; text-decoration:none;">{{.}}</a>
-  {{/KeywordsList}}
+<!-- Breadcrumb Navigation -->
+<div class="mt-3">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="https://smartfinance360.com/">Home</a></li>
+      <li class="breadcrumb-item"><a href="https://smartfinance360.com/articles/">Articles</a></li>
+      <li class="breadcrumb-item active">{{Title}}</li>
+    </ol>
+  </nav>
 </div>
-{{/KeywordsList.length}}
 
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="row">
 
-  <!-- Social Share Buttons -->
-              <div class="social-share mt-2">
-                <h6>Share this article:</h6>
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{CanonicalURL}}" target="_blank" class="social-icon fb"><i class="fab fa-facebook-f fa-2x"></i></a>
-                <a href="https://twitter.com/intent/tweet?text={{Title}}&url={{CanonicalURL}}" target="_blank" class="social-icon tw"><i class="fab fa-twitter fa-2x"></i></a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{CanonicalURL}}" target="_blank" class="social-icon li"><i class="fab fa-linkedin-in fa-2x"></i></a>
-                <a href="https://api.whatsapp.com/send?text={{Title}} {{CanonicalURL}}" target="_blank" class="social-icon wa"><i class="fab fa-whatsapp fa-2x"></i></a>
+        <!-- Article -->
+        <div class="col-lg-8 mb-5 mb-lg-0">
+          <article class="text-center py-5">
+            <header class="mb-4">
+              <h1>{{Title}}</h1>
+              <div class="text-muted small">
+                <span>{{DateTime}}</span> · <span>{{ReadTime}} min read</span> · <span>By {{Author}}</span> · <span>{{Views}} Views</span>
               </div>
-            </article>
-          </div>
 
-          <!-- Sidebar Partial -->
-          <div class="col-lg-4">
-            {{> sidebar}}
-          </div>
+              <ul class="post-meta mt-2">
+                {{#CategoryList}}
+                <li style="display:inline; margin-right:5px;">
+                  <a href="{{root}}category.html?category={{.}}">{{.}}</a>
+                </li>
+                {{/CategoryList}}
+              </ul>
+            </header>
 
+            <figure>
+              <img src="{{ImageURL}}" alt="{{Title}}" class="w-100 rounded">
+            </figure>
+
+            <section class="article-content">
+              {{{Content}}}
+            </section>
+
+            {{#KeywordsList.length}}
+            <div class="article-keywords mt-2">
+              <strong>Keywords:</strong>
+              {{#KeywordsList}}
+                <a href="search.html?keyword={{.}}" class="badge bg-light text-dark">{{.}}</a>
+              {{/KeywordsList}}
+            </div>
+            {{/KeywordsList.length}}
+
+            <div class="social-share mt-4">
+              <h6>Share this article:</h6>
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{CanonicalURL}}" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a>
+              <a href="https://twitter.com/intent/tweet?text={{Title}}&url={{CanonicalURL}}" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{CanonicalURL}}" target="_blank"><i class="fab fa-linkedin-in fa-2x"></i></a>
+              <a href="https://api.whatsapp.com/send?text={{Title}} {{CanonicalURL}}" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
+            </div>
+          </article>
         </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+          {{> sidebar}}
+        </div>
+
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <!-- Footer Partial -->
-  {{> footer}}
+<!-- Footer -->
+{{> footer}}
 
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/article.js" defer></script>
-  <script src="js/sidebar.js" defer></script>
+<!-- Header JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Sticky Header
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector("header.navigation");
+    header.classList.toggle("sticky", window.scrollY > 50);
+  });
+
+  // Active Nav Highlight
+  let currentPath = window.location.pathname.split("/").pop();
+  if (currentPath === "") currentPath = "index.html";
+
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+<!-- Page JS -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/article.js" defer></script>
+<script src="js/sidebar.js" defer></script>
+
 </body>
 </html>

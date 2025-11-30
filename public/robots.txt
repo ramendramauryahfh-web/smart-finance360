@@ -4,7 +4,6 @@ Disallow: /admin/
 Disallow: /login/
 Disallow: /wp-admin/     # Agar WordPress hota
 Disallow: /cgi-bin/
-Disallow: /articles.html
 Allow: /script.google.com
 Allow: /gstatic.com
 

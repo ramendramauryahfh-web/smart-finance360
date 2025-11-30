@@ -69,7 +69,7 @@ async function fetchArticles() {
 
     return {
       slug,
-      Title: title,
+      Title: obj.Title || title,
       Content: obj.Content || '',
       Excerpt: obj.Excerpt || '',
       DateTime: obj.DateTime || '',
@@ -105,7 +105,7 @@ async function fetchThoughts() {
       text: obj.thought || obj.Thought || 'Stay motivated!',
       author: obj.author || 'Smart Finance 360',
       bg: obj.color || '#ffffff',
-      showAd: (index + 1) % 8 === 0 // Show ad after every 8th
+      showAd: (index + 1) % 3 === 0 // Show ad after every 3rd
     };
   });
 
@@ -170,6 +170,12 @@ async function fetchThoughts() {
     const pages = [
       { loc: 'https://smartfinance360.com/index.html', changefreq: 'hourly', priority: 1.0 },
       { loc: 'https://smartfinance360.com/motivational.html', changefreq: 'daily', priority: 0.9 },
+      { loc: 'https://smartfinance360.com/finance.html', changefreq: 'daily', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/investment.html', changefreq: 'daily', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/sports.html', changefreq: 'daily', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/technology.html', changefreq: 'daily', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/business.html', changefreq: 'daily', priority: 0.8 },
+      { loc: 'https://smartfinance360.com/contact.html', changefreq: 'weekly', priority: 0.6 },
     ];
 
     articles.forEach(article => {

@@ -10,8 +10,11 @@
   <meta name="author" content="{{metaAuthor}}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{{canonical}}">
+  <meta name="language" content="English">
+  <meta name="rating" content="General">
+  <meta name="theme-color" content="#ffcd00">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:title" content="{{ogTitle}}">
   <meta property="og:description" content="{{ogDescription}}">
   <meta property="og:type" content="website">
@@ -25,17 +28,72 @@
   <meta name="twitter:title" content="{{ogTitle}}">
   <meta name="twitter:description" content="{{ogDescription}}">
   <meta name="twitter:image" content="{{ogImage}}">
+  <meta name="twitter:site" content="@SmartFinance360">
 
   <!-- Favicon -->
   <link rel="icon" href="{{favicon}}" type="image/x-icon">
+  <link rel="apple-touch-icon" href="{{favicon}}">
+  <meta name="apple-mobile-web-app-title" content="Smart Finance 360">
 
   <!-- Styles & Fonts -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- AdSense -->
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-276VFWZL9H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-276VFWZL9H');
+  </script>
+
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{adsClient}}" crossorigin="anonymous"></script>
 
+  <!-- JSON-LD: CollectionPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "{{title}}",
+    "description": "{{metaDescription}}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Smart Finance 360",
+      "url": "https://smartfinance360.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://smartfinance360.com/images/logo.png"
+      }
+    },
+    "url": "{{canonical}}"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://smartfinance360.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{title}}",
+        "item": "{{canonical}}"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Styles -->
   <style>
     body {
       background: linear-gradient(135deg, #e3f2fd, #fce4ec);
@@ -145,25 +203,6 @@
       }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Motivational Thoughts",
-    "description": "Daily motivational thoughts and inspirational quotes to uplift your day.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Smart Finance 360",
-      "url": "https://smartfinance360.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://smartfinance360.com/images/logo.png"
-      }
-    },
-    "url": "https://smartfinance360.com/motivational.html"
-  }
-  </script>
 </head>
 
 <body>
@@ -219,37 +258,65 @@
 
   <script>
     (function() {
-      window.THOUGHTS_MAP = window.THOUGHTS_MAP || {};
+  window.THOUGHTS_MAP = window.THOUGHTS_MAP || {};
+const BASE_URL = "https://smartfinance360.com/motivational.html";
 
-      window.copyThought = function(e) {
-        var id = e.currentTarget.getAttribute('data-id');
-        var t = (window.THOUGHTS_MAP && window.THOUGHTS_MAP[id]) ? window.THOUGHTS_MAP[id].text : document.getElementById('thought-' + id)?.innerText;
-        var shareUrl = (window.location.origin || '') + '{{pageBasePath}}?thought=' + id;
-        var shareText = '"' + (t || '') + '"\\n\\nRead more: ' + shareUrl;
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(shareText).then(() => alert('✅ Thought copied!'));
-        } else {
-          var ta = document.createElement('textarea');
-          ta.value = shareText;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          alert('✅ Thought copied!');
-        }
-      };
+/* -------------------- COPY -------------------- */
+window.copyThought = function (e) {
+  var id = e.currentTarget.getAttribute("data-id");
+  var fullText =
+    (window.THOUGHTS_MAP && window.THOUGHTS_MAP[id])
+      ? window.THOUGHTS_MAP[id].text
+      : document.getElementById("thought-" + id)?.innerText;
 
-      window.shareThought = function(e) {
-        var id = e.currentTarget.getAttribute('data-id');
-        var t = (window.THOUGHTS_MAP && window.THOUGHTS_MAP[id]) ? window.THOUGHTS_MAP[id].text : document.getElementById('thought-' + id)?.innerText;
-        var shareUrl = (window.location.origin || '') + '{{pageBasePath}}?thought=' + id;
-        var shareText = '"' + (t || '') + '"\\n\\nRead more: ' + shareUrl;
-        if (navigator.share) {
-          navigator.share({ title: '{{shareTitle}}', text: shareText });
-        } else {
-          window.open('https://wa.me/?text=' + encodeURIComponent(shareText), '_blank');
-        }
-      };
+  var t = fullText.length > 30 ? fullText.slice(0, 30) + "…" : fullText;
+
+  const shareUrl = BASE_URL + "?thought=" + id;
+
+  // italic + no quotes
+  var copyText = `*${t}*\nRead more: ${shareUrl}`;
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(copyText).then(() => alert("✅ Thought copied!"));
+  } else {
+    var ta = document.createElement("textarea");
+    ta.value = copyText;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    alert("✅ Thought copied!");
+  }
+};
+
+/* -------------------- SHARE -------------------- */
+window.shareThought = function (e) {
+  var id = e.currentTarget.getAttribute("data-id");
+  var fullText =
+    (window.THOUGHTS_MAP && window.THOUGHTS_MAP[id])
+      ? window.THOUGHTS_MAP[id].text
+      : document.getElementById("thought-" + id)?.innerText;
+
+  var t = fullText.length > 30 ? fullText.slice(0, 30) + "…" : fullText;
+
+  const shareUrl = BASE_URL + "?thought=" + id;
+
+  // italic + clean
+  var shareText = `*${t}*\nRead more: ${shareUrl}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Thought of the Day",
+      text: shareText
+    });
+  } else {
+    window.open(
+      "https://wa.me/?text=" + encodeURIComponent(shareText),
+      "_blank"
+    );
+  }
+};
+
 
       document.addEventListener('DOMContentLoaded', function() {
         try {
