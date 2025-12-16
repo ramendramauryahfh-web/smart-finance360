@@ -1,11 +1,7 @@
-# Allow all search engines to crawl everything
 User-agent: *
 Disallow: /admin/
 Disallow: /login/
-Disallow: /wp-admin/     # Agar WordPress hota
+Disallow: /wp-admin/
 Disallow: /cgi-bin/
-Allow: /script.google.com
-Allow: /gstatic.com
 
-# Sitemap Location
-Sitemap: https://www.smartfinance360.com/sitemap.xml
+Sitemap: https://smartfinance360.com/sitemap.xml

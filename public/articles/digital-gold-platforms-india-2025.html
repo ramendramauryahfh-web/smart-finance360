@@ -295,7 +295,7 @@
               .widget-blocks .widget {
                 margin-bottom: 30px;
               }
-          
+
               .widget-blocks .section-title {
                 font-size: 1.25rem;
                 font-weight: 600;
@@ -304,44 +304,44 @@
                 padding-bottom: 5px;
                 text-transform: uppercase;
               }
-          
+
               .widget-blocks .widget-list li {
                 list-style: none;
                 margin-bottom: 8px;
               }
-          
+
               .widget-blocks .widget-list li a {
                 text-decoration: none;
                 color: #1a1f36;
                 display: flex;
                 justify-content: space-between;
               }
-          
+
               .widget-blocks .widget-list li a:hover {
                 color: #ffcd00;
               }
-          
+
               .widget-blocks .card {
                 border: 1px solid #e1e1e1;
                 border-radius: 8px;
                 overflow: hidden;
                 transition: all 0.3s ease;
               }
-          
+
               .widget-blocks .card:hover {
                 box-shadow: 0 4px 15px rgba(0,0,0,0.1);
               }
-          
+
               .widget-blocks .card-image {
                 position: relative;
               }
-          
+
               .widget-blocks .card-image img {
                 width: 100%;
                 height: auto;
                 display: block;
               }
-          
+
               .widget-blocks .post-info {
                 position: absolute;
                 top: 5px;
@@ -352,11 +352,11 @@
                 font-size: 0.75rem;
                 border-radius: 3px;
               }
-          
+
               .widget-blocks .card-body {
                 padding: 10px 5px;
               }
-          
+
               .widget-blocks .post-title-sm {
                 font-size: 1rem;
                 font-weight: 600;
@@ -364,22 +364,22 @@
                 color: #1a1f36;
                 text-decoration: none;
               }
-          
+
               .widget-blocks .post-title-sm:hover {
                 color: #ffcd00;
               }
-          
+
               .widget-blocks .read-more-btn {
                 font-size: 0.875rem;
                 text-decoration: none;
                 color: #007bff;
               }
-          
+
               .widget-blocks .read-more-btn:hover {
                 text-decoration: underline;
                 color: #ffcd00;
               }
-          
+
               .image-fallback-xs {
                 display: inline-block;
                 width: 100%;
@@ -391,7 +391,7 @@
                 font-size: 0.875rem;
               }
             </style>
-          
+
             <div class="row">
               <!-- Recommended -->
               <div class="col-lg-12 col-md-6">
@@ -404,7 +404,7 @@
                   </div>
                 </div>
               </div>
-          
+
               <!-- Categories -->
               <div class="col-lg-12 col-md-6">
                 <div class="widget">
@@ -417,20 +417,20 @@
                 </div>
               </div>
             </div>
-          
+
             <!-- Sidebar JS -->
             <script>
             (async function() {
               const url = "https://script.google.com/macros/s/AKfycbyvaD63Zj2HtiGco4vSOhbUCbpjLn_clCZgeBLFlHavhhPoaS1JP8uVT0j50X2wJ7V7/exec?action=sidebar&limit=5";
-          
+
               try {
                 const res = await fetch(url);
                 const payload = await res.json();
-          
+
                 // --- Recommended ---
                 const recommended = payload.recommended || [];
                 const recContainer = document.getElementById("recommended-list");
-          
+
                 if (recContainer) {
                   recContainer.innerHTML = recommended.map(row => {
                     const slug = row.Slug ? row.Slug : row.Title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
@@ -456,11 +456,11 @@
                     `;
                   }).join("");
                 }
-          
+
                 // --- Categories ---
                 const categories = payload.categories || {};
                 const categoryList = document.getElementById("category-list");
-          
+
                 if (categoryList) {
                   if (Object.keys(categories).length === 0) {
                     categoryList.innerHTML = "<li>No categories found</li>";
